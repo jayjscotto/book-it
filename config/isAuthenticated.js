@@ -1,4 +1,4 @@
-//For restricting routes if a user is not logged in
+//Middleware or restricting routes if a user is not logged in
 
 module.exports = function(req, res, next) {
   // If the user is logged in, continue with the request to the restricted route

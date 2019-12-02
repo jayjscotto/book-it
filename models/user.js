@@ -25,18 +25,14 @@ module.exports = function(sequelize, DataTypes) {
     //Creating custom method for User model
     //to check if unhashed password entered by the user 
     //can be compared against the hashed password in DB
-    User.prototype.validPassword = (password) => {
+    User.prototype.validPassword = function (password) {
         return bcrypt.compareSync(password, this.password);
     };
 
     //Before creating the user, automatically hash the password
-    User.beforeCreate(user => {
-        user.password = bcrypt.hashSync(
-            user.password,
-            bcrypt.genSaltSync(10),
-            null
-        );
-    });
-    
+    User.addHook("beforeCreate", function (user) {
+        user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    });   
     return User;
-}
+};
+    

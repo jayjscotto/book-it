@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('book-it:server');
 var http = require('http');
+var isAuthenticated = require("../config/isAuthenticated");
 
 // Requiring our models for syncing
 var db = require(".././models");

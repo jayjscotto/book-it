@@ -7,8 +7,7 @@ var db = require('.././models');
 
 //Letting passport know we want to use a Local Strategy
 //(log in with username/email and password)
-
-passport.serializeUser(new LocalStrategy(
+passport.use(new LocalStrategy(
     //user signs in with email
     {
         usernameField: 'email'
@@ -35,7 +34,6 @@ passport.serializeUser(new LocalStrategy(
             }
 
             //if neither, return user
-
             return done(null, dbUser);
         })
     }
@@ -44,7 +42,6 @@ passport.serializeUser(new LocalStrategy(
 //To keep auth state across HTTP requests,
 //Sequelize needs to serialize and deserialize the user
 //--boilerplate to serialize and deserialize:
-
 passport.serializeUser((user, cb) => {
     cb(null, user);
 });

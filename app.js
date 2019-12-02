@@ -6,9 +6,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var passport = require("./config/passport");
+var isAuthenticated = require("./config/isAuthenticated");
 
-var indexRouter = require('./routes/index');
-var apiRouter = require('./routes/api-routes');
+var userRouter = require('./routes/user-routes');
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -16,19 +17,21 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+//middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/api', apiRouter);
 
 //session to keep track of user state
 app.use(session({ secret: process.env.SECRET, resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', userRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
