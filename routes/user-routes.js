@@ -19,9 +19,10 @@ router.get('/login', (req, res) => {
     res.redirect('/members');
   }
   res.sendFile(path.join(__dirname, '../public/login.html'));
-})
+});
 
 router.get('/members', isAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, '../public/members.html'));
-})
+});
+
 module.exports = router;

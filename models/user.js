@@ -21,6 +21,14 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         }
     });
+
+    User.associate = function(models) {
+        //Associate User with Appointments
+        //When User is deleted, also delete any associated Appointments
+        User.hasMany(models.Appointment, {
+            onDelete: "cascade"
+        });
+    };
     
     //Creating custom method for User model
     //to check if unhashed password entered by the user 
@@ -35,4 +43,3 @@ module.exports = function(sequelize, DataTypes) {
     });   
     return User;
 };
-    
