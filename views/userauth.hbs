@@ -1,0 +1,38 @@
+
+    <div class="body-container">
+        <div class="home-card">
+            <h1 class="h1">Hello, World!</h1>
+            <p class="lead">BookFit is a fitness-based appointment service.</p>
+            <p class="lead">Login or Register today to secure your class now- members and drop-ins supported!</p>
+            <hr class="my-4">
+            <div class="user-auth">
+                <form id="login" class="login-form">
+                    <label for="login">E-mail</label>
+                    <input id="user-login-email" class="form-control" type="email">  
+                    <label for="login">Password</label>
+                    <input id="user-login-password" class="form-control" type="password">
+                    {{#if signup}}
+                    <a id="signup-submit" class="btn" role="button">Sign Up</a>
+                    {{else}}
+                    <a id="login-submit" class="btn" role="button">Login</a>
+                    {{/if}}
+                </form>
+                {{#if signup}}
+                <div id="signup" class="signup">
+                    <h5>Already have an account?</h5>
+                    <a id="main-signup" class="btn " href="/login" role="button">Login</a>
+                </div>
+                {{else}}
+                <div id="signup" class="signup">
+                    <h5>Need an account?</h5>
+                    <a id="main-signup" class="btn " href="/sign-ip" role="button">Sign Up</a>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+
+<footer>
+    <h6>BookFit</h6>
+</footer>

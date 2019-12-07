@@ -3,10 +3,11 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
-body, html {
+body,
+html {
   height: 100%;
 }
 
@@ -21,13 +22,21 @@ body {
   min-height: 100%;
 }
 
+body a {
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
 body #bg {
   background-color: #c5f8ff;
   -webkit-clip-path: polygon(100% 0, 100% 79%, 42% 100%, 0 100%, 0 0);
           clip-path: polygon(100% 0, 100% 79%, 42% 100%, 0 100%, 0 0);
   width: 100%;
   min-height: 100%;
-  position: absolute;
+  position: fixed;
+  top: 0;
   z-index: -1;
 }
 
@@ -70,43 +79,65 @@ body nav button.navbar-toggler {
 }
 
 body nav div.navbar-collapse ul li {
-  margin: 0 .75em;
+  margin: 0 0.75em;
+  text-align: right;
 }
 
 body nav div.navbar-collapse ul li a {
   color: #00e5f5 !important;
-  border-radius: 5px;
-  margin: .5em 2em;
+  margin: 0.5em 1em;
+}
+
+body nav div.navbar-collapse ul li a a.nav-link {
+  padding: 0 2em;
 }
 
 body nav div.navbar-collapse ul li a:hover {
-  opacity: 0.8;
   background-color: #00e5f5;
-  color: #f5f7f7 !important;
+  color: black !important;
   cursor: pointer;
 }
 
-body div.body-container div.home-main {
-  background-color: #f5f7f7;
+body div.body-container {
   width: 80%;
+  margin: 0 auto;
+}
+
+body div.body-container a {
+  margin: 0.5em auto;
+  background-color: #343a40;
+  color: #00e5f5;
+  font-weight: 500;
+}
+
+body div.body-container a:hover {
+  opacity: 0.8;
+  background-color: #00e5f5;
+  color: black;
+  cursor: pointer;
+}
+
+body div.body-container div.home-card {
+  background-color: #f5f7f7;
+  max-width: 100%;
   text-align: center;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 20px;
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 1em auto;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-body div.body-container div.home-main h1.h1 {
+body div.body-container div.home-card h1.h1 {
   font-size: 3em;
 }
 
-body div.body-container div.home-main div.login-signup {
+body div.body-container div.home-card div.user-auth {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -114,9 +145,11 @@ body div.body-container div.home-main div.login-signup {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  text-transform: uppercase;
 }
 
-body div.body-container div.home-main div.login-signup div.login {
+body div.body-container div.home-card div.user-auth form#login {
+  min-width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,45 +157,36 @@ body div.body-container div.home-main div.login-signup div.login {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 50%;
   text-align: center;
-  border-right: 1px dashed;
 }
 
-body div.body-container div.home-main div.login-signup div.login input {
+body div.body-container div.home-card div.user-auth form#login input {
   width: 70%;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
-body div.body-container div.home-main div.login-signup div.login a.btn {
+body div.body-container div.home-card div.user-auth form#login a.btn {
   margin-top: 0.5em !important;
   width: 40%;
 }
 
-body div.body-container div.home-main div.login-signup div.signup {
-  margin: auto;
+@media (min-width: 768px) {
+  body div.body-container div.home-card div.user-auth form#login {
+    border-right: 1px dashed;
+  }
 }
 
-body div.body-container div.home-main div.login-signup div.signup a.btn {
+body div.body-container div.home-card div.user-auth div#signup {
+  margin: 2em auto 0 auto;
+}
+
+body div.body-container div.home-card div.user-auth div#signup a.btn {
   width: 60%;
 }
 
-body div.body-container div.home-main div.login-signup div.login a.btn, body div.body-container div.home-main div.login-signup div.signup a.btn {
-  margin: 0 auto;
-  background-color: #343a40;
-  color: #00e5f5;
-}
-
-body div.body-container div.home-main div.login-signup div.login a.btn:hover, body div.body-container div.home-main div.login-signup div.signup a.btn:hover {
-  opacity: 0.8;
-  background-color: #00e5f5;
-  color: #f5f7f7 !important;
-  cursor: pointer;
-}
-
 @media (min-width: 768px) {
-  body div.body-container div.home-main div.login-signup {
+  body div.body-container div.home-card div.user-auth {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -202,9 +226,19 @@ body div.body-container div.cards section.card {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body div.body-container div.cards section.card h3, body div.body-container div.cards section.card p {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0.5em auto 0 auto;
+}
+
+body div.body-container div.cards section.card input {
+  border-radius: 10px;
 }
 
 @media (min-width: 768px) {
@@ -220,7 +254,7 @@ body div.body-container div.cards section.card ul li {
 body footer {
   margin-top: auto;
   background-color: #343a40;
-  padding: .5em;
+  padding: 0.5em;
   color: #00e5f5;
   text-align: center;
   -webkit-box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);

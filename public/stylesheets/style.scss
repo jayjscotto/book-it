@@ -34,13 +34,19 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
-
+  a {
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
   #bg {
     background-color: colors(color2);
     clip-path: polygon(100% 0, 100% 79%, 42% 100%, 0 100%, 0 0);
     width: 100%;
     min-height: 100%;
-    position: absolute;
+    position: fixed;
+    top:0;
     z-index: -1;
 
     @include desktop {
@@ -75,14 +81,16 @@ body {
       ul {
         li {
           margin: 0 0.75em;
+          text-align: right;
           a {
-            color: colors(color1) !important;
-            border-radius: 5px;
-            margin: 0.5em 2em;
+            color: colors(color1)!important;
+            margin: 0.5em 1em;
+            a.nav-link {
+              padding: 0 2em;
+            }
             &:hover {
-              opacity: 0.8;
               background-color: colors(color1);
-              color: colors(color5) !important;
+              color: black!important;
               cursor: pointer;
             }
           }
@@ -92,29 +100,44 @@ body {
   }
 
   div.body-container {
+    width: 80%;
+    margin: 0 auto;
+    
+    a {
+      margin: 0.5em auto;
+      background-color: colors(color4);
+      color: colors(color1);
+      font-weight: 500;
+      &:hover {
+        opacity: 0.8;
+        background-color: colors(color1);
+        color: black;
+        cursor: pointer;
+      }
+    }
+
     div.home-card {
       background-color: colors(color5);
-      max-width: 70%;
+      max-width: 100%;
       text-align: center;
       height: fit-content;
       padding: 20px;
       width: 90%;
-      margin: 0 auto;
+      margin: 0 auto 1em auto;
       border: none;
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      // @include desktop {
-      //     max-width: 70%;
-      //     margin: 0 auto;
-      // }
+   
       h1.h1 {
         font-size: 3em;
       }
-      div.login-signup {
+
+      div.user-auth {
         display: flex;
         flex-direction: column;
         text-transform: uppercase;
-        div.login {
+        
+        form#login {
           min-width: 50%;
           display: flex;
           flex-direction: column;
@@ -122,7 +145,7 @@ body {
           input {
             width: 70%;
             margin: 0 auto;
-            border-radius: 5px;
+            border-radius: 10px;
           }
           a.btn {
             margin-top: 0.5em !important;
@@ -132,24 +155,10 @@ body {
             border-right: 1px dashed;
           }
         }
-        div.signup {
+        div#signup {
           margin: 2em auto 0 auto;
           a.btn {
             width: 60%;
-          }
-        }
-        div.login,
-        div.signup {
-          a.btn {
-            margin: 0 auto;
-            background-color: colors(color4);
-            color: colors(color1);
-            &:hover {
-              opacity: 0.8;
-              background-color: colors(color1);
-              color: colors(color5) !important;
-              cursor: pointer;
-            }
           }
         }
         @include desktop {
@@ -177,6 +186,16 @@ body {
         border: none;
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+        h3, p {
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          margin: 0.5em auto 0 auto;
+        }
+
+        input {
+          border-radius: 10px;
+        }
 
         @include desktop {
           width: 45%;
