@@ -7,22 +7,29 @@ var isAuthenticated = require("../config/isAuthenticated");
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  if (req.user) {
-    res.redirect('/members');
-  }
-  res.sendFile(path.join(__dirname, '../public/signup.html'));
-  //res.render('index', { title: 'Express' });
+  // if (req.user) {
+  //   res.redirect('/members');
+  // }
+  res.render('index');
+});
+
+router.get('/sign-up', (req, res) => {
+  res.render('userauth', {signup: true});
 });
 
 router.get('/login', (req, res) => {
-  if (req.user) {
-    res.redirect('/members');
-  }
-  res.sendFile(path.join(__dirname, '../public/login.html'));
-});
+  res.render('userauth', {signup: false});
+})
+
 
 router.get('/members', isAuthenticated, (req, res) => {
-  res.render('index');
+  console.log(`Hello ${req.user.email}`);
+
+  let user = {
+    email: req.user.email
+  }
+
+  res.render('index', {username: user});
 });
 
 module.exports = router;
