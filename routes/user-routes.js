@@ -22,7 +22,7 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/members', isAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/members.html'));
+  res.render('index');
 });
 
 module.exports = router;
