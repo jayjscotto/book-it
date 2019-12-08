@@ -1,38 +1,34 @@
 module.exports = function(sequelize, DataTypes) {
-    var  Business= sequelize.define("Business", {
-        business_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
-        },
-        address: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        zipcode: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            }
-        }
-    });
+  var Business = sequelize.define("Business", {
+    business_id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
 
-    Business.associate = function(models) {
-        //Associate Business with Service
-        //When Business is deleted, also delete any associated appointments
-        Business.hasMany(models.Service);
-    };
+    name: {
+      type: DataTypes.STRING(150),
+      allowNull: false
+    },
 
-    Business.associate = function(models) {
-        //Associate Business with Appointment
-        //When Business is deleted, also delete any associated appointments
-        Business.hasMany(models.Appointment, {
-            onDelete: "cascade"
-        });
-    };
+    address: {
+      type: DataTypes.STRING(200),
+      allowNull: false,
+      validate: {
+        len: [1, 200]
+      }
+    },
 
-    return Business;
+    zipcode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        isNumeric: true
+      }
+    }
+  });
+
+  return Business;
 }
-
-//One business will have many services available
-//One business will have many appointments booked

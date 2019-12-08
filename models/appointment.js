@@ -1,35 +1,43 @@
+
 module.exports = function(sequelize, DataTypes) {
-    var  Appointment = sequelize.define("Appointment", {
-        
+  var Appointment = sequelize.define("Appointments", {
+    appointment_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+
+    day: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        is: ["^[a-z]+$", "i"], // will only allow letters
+        len: [1]
+      }
+    },
+
+    // class_name: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    //   validate: {
+    //     len: [1]
+    //   }
+    // }
+  });
+
+  Appointment.associate = (models) => {
+    Appointment.belongsTo(models.Business, {
+      foreignKey: 'business_id',
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
     });
 
-    //one user will have many appointments
-    Appointment.associate = function(models) {
-        Appointment.belongsTo(models.User, {
-            foreignKey: 'user_id',
-            targetKey: 'id',
-            allowNull: false
-        });
-    };
-
-    //one service will be many appointments
-    Appointment.associate = function(models) {
-        Appointment.hasOne(models.Service, {
-            foreignKey: 'service_id',
-            targetKey: 'service_id',
-            allowNull: false
-        })
-    }
-
-    //one business will have many appointments booked
-    Appointment.associate = function(models) {
-        Appointment.belongsTo(models.Business, {
-            foreignKey: 'business_id',
-            targetKey: 'business_id',
-            allowNull: false
-        });
-    };
-
-    return Appointment;
+    Appointment.belongsTo(models.User, {
+      foreignKey: 'user_id',
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+    });
+  }
+  return Appointment;
 }
-

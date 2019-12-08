@@ -6,6 +6,7 @@ var bcrypt = require("bcryptjs");
 //export to require on server
 module.exports = function(sequelize, DataTypes) {
     var User = sequelize.define("User", {
+        
         //E-mail cannot be null, and must be a valid email
         email: {
             type: DataTypes.STRING,
@@ -15,20 +16,14 @@ module.exports = function(sequelize, DataTypes) {
                 isEmail: true
             }
         },
+
         //password cannot be null
         password: {
             type: DataTypes.STRING,
             allowNull: false
         }
     });
-
-    User.associate = function(models) {
-        //Associate User with Appointments
-        //When User is deleted, also delete any associated Appointments
-        User.hasMany(models.Appointment, {
-            onDelete: "cascade"
-        });
-    };
+    
     
     //Creating custom method for User model
     //to check if unhashed password entered by the user 
@@ -41,5 +36,6 @@ module.exports = function(sequelize, DataTypes) {
     User.addHook("beforeCreate", function (user) {
         user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
     });   
+
     return User;
 };
