@@ -27,13 +27,13 @@ router.post('/signup', (req, res) => {
 
 //route to log out
 router.get('/logout', (req, res) => {
-  req.logout();
+  req.logOut();
   res.redirect('/')
 });
 
 //route to get user data to use client side
 router.get('/user_data', (req, res) => {
-  console.log(req.user);
+  //console.log(req.user);
   if (!req.user) {
     //if the user is not logged in, respond with an empty object
     res.json({});

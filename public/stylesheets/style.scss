@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
+}
+
+$desktop: 768px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+$colors: (
+  color1: rgb(0, 229, 245),
+  color2: lighten(rgb(0, 84, 95), 70%),
+  color3: rgb(76, 108, 253),
+  color4: rgb(52, 58, 64),
+  color5: rgb(245, 247, 247)
+);
+
+@function colors($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  a {
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
+  #bg {
+    background-color: colors(color2);
+    clip-path: polygon(100% 0, 100% 79%, 42% 100%, 0 100%, 0 0);
+    width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top:0;
+    z-index: -1;
+
+    @include desktop {
+      clip-path: polygon(100% 0, 100% 25%, 100% 42%, 69% 100%, 0 100%, 0 0);
+    }
+  }
+  nav {
+    text-transform: uppercase;
+    background-color: colors(color4);
+    display: flex;
+    margin-bottom: 1em;
+    position: fixed;
+    top: 0;
+    padding: 0 !important;
+    box-shadow: 0px 4px 16px -5px rgba(181, 154, 181, 0.97);
+
+    h1 {
+      width: 50%;
+      margin: 0.25em 0 0.25em 1em;
+      font-size: 2em;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: colors(color1);
+      span.title {
+        font-size: 1.35em;
+      }
+    }
+    button.navbar-toggler {
+      margin-right: 1em;
+    }
+    div.navbar-collapse {
+      ul {
+        li {
+          margin: 0 0.75em;
+          text-align: right;
+          a {
+            color: colors(color1)!important;
+            margin: 0.5em 1em;
+            a.nav-link {
+              padding: 0 2em;
+            }
+            &:hover {
+              background-color: colors(color1);
+              color: black!important;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  div.body-container {
+    width: 80%;
+    margin: 0 auto;
+    
+    a {
+      margin: 0.5em auto;
+      background-color: colors(color4);
+      color: colors(color1);
+      font-weight: 500;
+      &:hover {
+        opacity: 0.8;
+        background-color: colors(color1);
+        color: black;
+        cursor: pointer;
+      }
+    }
+
+    div.home-card {
+      background-color: colors(color5);
+      max-width: 100%;
+      text-align: center;
+      height: fit-content;
+      padding: 20px;
+      width: 90%;
+      margin: 0 auto 1em auto;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+   
+      h1.h1 {
+        font-size: 3em;
+      }
+      div.user-auth {
+        display: flex;
+        flex-direction: column;
+        text-transform: uppercase;
+        
+        form#login {
+          min-width: 50%;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          input {
+            width: 70%;
+            margin: 0 auto;
+            border-radius: 10px;
+          }
+          a.btn {
+            margin-top: 0.5em !important;
+            width: 40%;
+          }
+          @include desktop {
+            border-right: 1px dashed;
+          }
+        }
+        div#signup {
+          margin: 2em auto 0 auto;
+          a.btn {
+            width: 60%;
+          }
+        }
+        @include desktop {
+          flex-direction: row;
+        }
+      }
+    }
+
+    div.cards {
+      margin: 0.5em 1.5em;
+      display: flex;
+      flex-direction: column;
+
+      @include desktop {
+        margin: 0.5em 7em;
+        flex-direction: row;
+      }
+      section.card {
+        background: colors(color5);
+        height: fit-content;
+        padding: 20px;
+        width: 90%;
+        margin: 2em auto;
+        justify-content: space-around;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+        h3, p {
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          margin: 0.5em auto 0 auto;
+        }
+
+        input {
+          border-radius: 10px;
+        }
+
+        @include desktop {
+          width: 45%;
+        }
+
+        ul {
+          li {
+            list-style: none;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    margin-top: auto;
+    background-color: colors(color4);
+    padding: 0.5em;
+    color: colors(color1);
+    text-align: center;
+    box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);
+  }
+}

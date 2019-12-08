@@ -8,9 +8,6 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        business_id: {
-            
-        }
     });
 
     Service.associate = function(models) {

@@ -1,8 +1,263 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", sans-serif;
 }
 
-a {
-  color: #00B7FF;
+body,
+html {
+  height: 100%;
 }
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100%;
+}
+
+body a {
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  border-radius: 10px;
+  text-transform: uppercase;
+}
+
+body #bg {
+  background-color: #c5f8ff;
+  -webkit-clip-path: polygon(100% 0, 100% 79%, 42% 100%, 0 100%, 0 0);
+          clip-path: polygon(100% 0, 100% 79%, 42% 100%, 0 100%, 0 0);
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  body #bg {
+    -webkit-clip-path: polygon(100% 0, 100% 25%, 100% 42%, 69% 100%, 0 100%, 0 0);
+            clip-path: polygon(100% 0, 100% 25%, 100% 42%, 69% 100%, 0 100%, 0 0);
+  }
+}
+
+body nav {
+  text-transform: uppercase;
+  background-color: #343a40;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1em;
+  position: fixed;
+  top: 0;
+  padding: 0 !important;
+  -webkit-box-shadow: 0px 4px 16px -5px rgba(181, 154, 181, 0.97);
+          box-shadow: 0px 4px 16px -5px rgba(181, 154, 181, 0.97);
+}
+
+body nav h1 {
+  width: 50%;
+  margin: 0.25em 0 0.25em 1em;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #00e5f5;
+}
+
+body nav h1 span.title {
+  font-size: 1.35em;
+}
+
+body nav button.navbar-toggler {
+  margin-right: 1em;
+}
+
+body nav div.navbar-collapse ul li {
+  margin: 0 0.75em;
+  text-align: right;
+}
+
+body nav div.navbar-collapse ul li a {
+  color: #00e5f5 !important;
+  margin: 0.5em 1em;
+}
+
+body nav div.navbar-collapse ul li a a.nav-link {
+  padding: 0 2em;
+}
+
+body nav div.navbar-collapse ul li a:hover {
+  background-color: #00e5f5;
+  color: black !important;
+  cursor: pointer;
+}
+
+body div.body-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+body div.body-container a {
+  margin: 0.5em auto;
+  background-color: #343a40;
+  color: #00e5f5;
+  font-weight: 500;
+}
+
+body div.body-container a:hover {
+  opacity: 0.8;
+  background-color: #00e5f5;
+  color: black;
+  cursor: pointer;
+}
+
+body div.body-container div.home-card {
+  background-color: #f5f7f7;
+  max-width: 100%;
+  text-align: center;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  width: 90%;
+  margin: 0 auto 1em auto;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body div.body-container div.home-card h1.h1 {
+  font-size: 3em;
+}
+
+body div.body-container div.home-card div.user-auth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-transform: uppercase;
+}
+
+body div.body-container div.home-card div.user-auth form#login {
+  min-width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+}
+
+body div.body-container div.home-card div.user-auth form#login input {
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+body div.body-container div.home-card div.user-auth form#login a.btn {
+  margin-top: 0.5em !important;
+  width: 40%;
+}
+
+@media (min-width: 768px) {
+  body div.body-container div.home-card div.user-auth form#login {
+    border-right: 1px dashed;
+  }
+}
+
+body div.body-container div.home-card div.user-auth div#signup {
+  margin: 2em auto 0 auto;
+}
+
+body div.body-container div.home-card div.user-auth div#signup a.btn {
+  width: 60%;
+}
+
+@media (min-width: 768px) {
+  body div.body-container div.home-card div.user-auth {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+body div.body-container div.cards {
+  margin: 0.5em 1.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  body div.body-container div.cards {
+    margin: 0.5em 7em;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+body div.body-container div.cards section.card {
+  background: #f5f7f7;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 20px;
+  width: 90%;
+  margin: 2em auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+body div.body-container div.cards section.card h3, body div.body-container div.cards section.card p {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0.5em auto 0 auto;
+}
+
+body div.body-container div.cards section.card input {
+  border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+  body div.body-container div.cards section.card {
+    width: 45%;
+  }
+}
+
+body div.body-container div.cards section.card ul li {
+  list-style: none;
+}
+
+body footer {
+  margin-top: auto;
+  background-color: #343a40;
+  padding: 0.5em;
+  color: #00e5f5;
+  text-align: center;
+  -webkit-box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);
+          box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);
+}
+/*# sourceMappingURL=style.css.map */
