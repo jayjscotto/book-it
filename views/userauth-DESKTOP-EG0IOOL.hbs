@@ -8,9 +8,9 @@
             <div class="user-auth">
                 <form id="login" class="login-form">
                     <label for="login">E-mail</label>
-                    <input id="email-input" class="form-control" type="email">  
+                    <input id="email-input" type="email">  
                     <label for="login">Password</label>
-                    <input id="password-input" class="form-control" type="password">
+                    <input id="password-input" type="password">
                     {{#if signup}}
                     <a id="signup-submit" class="btn" role="button">Sign Up</a>
                     {{else}}
@@ -20,12 +20,12 @@
                 {{#if signup}}
                 <div id="signup" class="signup">
                     <h5>Already have an account?</h5>
-                    <a id="login-transfer" class="btn " href="/login" role="button">Login</a>
+                    <a id="main-signup" class="btn " href="/login" role="button">Login</a>
                 </div>
                 {{else}}
                 <div id="signup" class="signup">
                     <h5>Need an account?</h5>
-                    <a id="signup-transfer" class="btn " href="/sign-up" role="button">Sign Up</a>
+                    <a id="main-signup" class="btn " href="/sign-ip" role="button">Sign Up</a>
                 </div>
                 {{/if}}
             </div>

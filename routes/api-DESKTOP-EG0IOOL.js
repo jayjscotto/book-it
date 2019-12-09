@@ -18,7 +18,6 @@ router.post('/signup', (req, res) => {
     email: req.body.email,
     password: req.body.password
   }).then(function() {
-    //WAS '/login' but got 404
     res.redirect(307, '/api/login');
   }).catch((err) => {
     console.log(err);

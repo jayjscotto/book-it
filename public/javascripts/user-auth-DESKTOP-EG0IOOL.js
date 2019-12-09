@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // Getting references to our form and inputs
-  const emailInput = $('input#email-input');
-  const passwordInput = $('input#password-input');
+  const emailInput = $('input#user-login-email');
+  const passwordInput = $('input#user-login-password');
   const loginSubmit = $('#login-submit');
   // When the form is submitted, we validate there's an email and password entered
   loginSubmit.on('click', function(event) {
@@ -46,5 +46,6 @@ $(document).ready(function() {
   $('#nav-logout').on('click', function() {
     $.get('/api/logout');
     location.reload();
+    console.log('hey')
   })
 });
