@@ -7,9 +7,9 @@ var isAuthenticated = require("../config/isAuthenticated");
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  // if (req.user) {
-  //   res.redirect('/members');
-  // }
+  if (req.user) {
+    res.redirect('/members');
+  }
   res.render('index');
 });
 
@@ -23,15 +23,19 @@ router.get('/login', (req, res) => {
 
 
 router.get('/members', isAuthenticated, (req, res) => {
-  const user = req.user.email.split('@');
-  const username = user[0];
-
-  console.log(username);
-  const userObj = {
-    email: username
+  console.log(req.user);
+  if (req.user) {
+    const user = req.user.email.split('@');
+    const username = user[0];
+  
+    const userObj = {
+      email: username
+    }
+  
+    res.render('index', {username: userObj});
+  } else {
+    res.render('userauth', {signup: false});
   }
-
-  res.render('index', {username: userObj});
 });
 
 module.exports = router;
