@@ -7,9 +7,10 @@ var passport = require("../config/passport");
 //if user has valid login credentials, send them to user homepage
 //otherwise send an error
 router.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log(req.user);
   //redirection will happen on the front-end
   //front-end receives this route if the user is authenticated
-  res.redirect('/members');
+  res.sendStatus(200);
 });
 
 //route for user signing up
@@ -17,9 +18,10 @@ router.post('/signup', (req, res) => {
   db.User.create({
     email: req.body.email,
     password: req.body.password
-  }).then(function() {
-    //WAS '/login' but got 404
+  }).then(function(user) {
     res.redirect(307, '/api/login');
+    console.log(user);
+    //res.redirect('/members');
   }).catch((err) => {
     console.log(err);
     res.json(err);

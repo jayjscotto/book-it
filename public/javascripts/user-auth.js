@@ -29,7 +29,7 @@ $(document).ready(function() {
       password: password
     }).then(function(data) {
       window.location.pathname = '/members';
-      console.log('hey');
+  
       // If there's an error, log the error
     }).catch(function(err) {
       console.log(err);
@@ -48,3 +48,4 @@ $(document).ready(function() {
     location.reload();
   })
 });
+

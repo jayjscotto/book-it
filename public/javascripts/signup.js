@@ -26,12 +26,12 @@ $(document).ready(function() {
   // Does a post to the signup route. If succesful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(email, password) {
-    console.log('hello')
     $.post("/api/signup", {
       email: email,
       password: password
     }).then(function(data) {
-      window.location.replace(data);
+      console.log(data);
+      window.location.pathname = "/members";
       // If there's an error, handle it by throwing up a boostrap alert
     }).catch(handleLoginErr);
   }
