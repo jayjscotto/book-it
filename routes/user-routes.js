@@ -4,6 +4,8 @@ const path = require('path');
 // Requiring our models for syncing
 const db = require('.././models');
 
+const Op = db.Sequelize.Op;
+
 //Require middleware for checking if a user is logged in
 const isAuthenticated = require('../config/isAuthenticated');
 
@@ -36,7 +38,6 @@ router.get('/members', isAuthenticated, (req, res) => {
 
   router.get('/location-search/:searchTerm', isAuthenticated, (req, res) => {
     const searchTerm = req.params.searchTerm;
-    console.log(searchTerm)
     db.Business.findAll({
       where: {
         state: searchTerm
@@ -44,7 +45,8 @@ router.get('/members', isAuthenticated, (req, res) => {
     })
       .then(function(results) {
         const searchRes = {
-          gym: results
+          gym: results,
+          username: true
         }
         res.render('usersearch', searchRes);
       })
@@ -53,19 +55,43 @@ router.get('/members', isAuthenticated, (req, res) => {
       });
   });
 
-  router.get('/class-search/:searchTerm', isAuthenticated, (req, res) => {
-    const searchTerm = req.params.searchTerm;
-    console.log(searchTerm);
+
+  router.get('/facility/facilityId=:id', isAuthenticated, (req, res) => {
+    const facilityId = req.params.id;
     db.Services.findAll({
       where: {
-        className: {
-          [Op.like]: `%${searchTerm}`
-        }
+        business_id: facilityId,
+      },
+      group: ['day_of_week']
+    }).then(function(results) {
+      console.log(results)
+      // const facilitySched = {
+        
+      // }
+    })
+  })
+
+  router.get('/class-search/:searchTerm', isAuthenticated, (req, res) => {
+    const searchTerm = req.params.searchTerm;
+
+    console.log(searchTerm);
+    
+    db.Services.findAll({
+      where: {
+        class_name: 'Small Group Weight Traning'
+        // class_name: {
+        //   [Op.like]: `%${searchTerm}`
+        // }
       }
     }).then(function(results) {
+
       const searchRes = {
-        class: results
+        class: results,
+        username: true
       }
+
+      console.log(searchRes);
+
       res.render('usersearch', searchRes);
     })
     .catch(err => {

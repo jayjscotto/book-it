@@ -193,6 +193,54 @@ body div.body-container div.home-card div.user-auth div#signup a.btn {
   }
 }
 
+body div.body-container div.home-card div.search-results div.card {
+  max-width: 80%;
+  margin: 2em auto 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body div.body-container div.home-card div.search-results div.card div.search-card-title {
+  max-width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  margin: 1em;
+}
+
+body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-title p {
+  margin: 0.35em 0 0 0.5em;
+}
+
+body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-btn {
+  margin-left: 0.5em;
+}
+
+body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-btn a {
+  width: 15em;
+  max-width: 85%;
+}
+
 body div.body-container div.cards {
   margin: 0.5em 1.5em;
   display: -webkit-box;
