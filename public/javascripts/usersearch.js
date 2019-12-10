@@ -1,11 +1,25 @@
 $(document).ready(function() {
     const locationSearchSubmit = $('#location-search-btn');
-    const locationSearchData = $('#location-search-submit').val().trim();
+
 
     locationSearchSubmit.on('click', (e) => {
         e.preventDefault();
+        const locationSearchData = $('#facility-search').val();
 
-        window.location = "/location-search" + locationSearchData;
+        window.location = `/location-search/${locationSearchData}`
+        //getSearchLocation(locationSearchData);
+        
+    });
+
+
+    const classSearchSubmit = $('#class-search-btn');
+
+
+    classSearchSubmit.on('click', (e) => {
+        e.preventDefault();
+        const classSearchData = $('#class-search').val();
+        
+        window.location = `/class-search/${classSearchData}`
         //getSearchLocation(locationSearchData);
         
     });

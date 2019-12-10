@@ -1,48 +1,68 @@
-var express = require("express");
-var router = express.Router();
-var path = require("path");
+const express = require('express');
+const router = express.Router();
+const path = require('path');
 // Requiring our models for syncing
-var db = require(".././models");
+const db = require('.././models');
 
 //Require middleware for checking if a user is logged in
-var isAuthenticated = require("../config/isAuthenticated");
+const isAuthenticated = require('../config/isAuthenticated');
 
 /* GET home page. */
-router.get("/", (req, res) => {
+router.get('/', (req, res) => {
   if (req.user) {
-    res.redirect("/members");
+    res.redirect('/members');
   }
-  res.render("index");
+  res.render('index');
 });
 
-router.get("/sign-up", (req, res) => {
-  res.render("userauth", { signup: true });
+router.get('/sign-up', (req, res) => {
+  res.render('userauth', { signup: true });
 });
 
-router.get("/login", (req, res) => {
-  res.render("userauth", { signup: false });
+router.get('/login', (req, res) => {
+  res.render('userauth', { signup: false });
 });
 
-router.get("/members", isAuthenticated, (req, res) => {
-  const user = req.user.email.split("@");
+router.get('/members', isAuthenticated, (req, res) => {
+  const user = req.user.email.split('@');
   const username = user[0];
 
   const userObj = {
     email: username
   };
 
-  res.render("index", { username: userObj });
+  res.render('index', { username: userObj });
 });
 
-router.get("/location-search/:searchTerm", isAuthenticated, (req, res) => {
-  const searchTerm = req.body.searchTerm;
+  router.get('/location-search/:searchTerm', isAuthenticated, (req, res) => {
+    const searchTerm = req.params.searchTerm;
+    console.log(searchTerm)
+    db.Business.findAll({
+      where: {
+        state: searchTerm
+      }
+    })
+      .then(function(results) {
+        const searchRes = {
+          gym: results
+        }
+        res.render('usersearch', searchRes);
+      })
+      .catch(err => {
+        if (err) throw err;
+      });
+  });
 
-  db.ServicefindAll({
-    where: {
-      state: searchTerm
-    }
-  })
-    .then(function(results) {
+  router.get('/class-search/:searchTerm', isAuthenticated, (req, res) => {
+    const searchTerm = req.params.searchTerm;
+    console.log(searchTerm);
+    db.Services.findAll({
+      where: {
+        className: {
+          [Op.like]: `%${searchTerm}`
+        }
+      }
+    }).then(function(results) {
       const searchRes = {
         class: results
       }
@@ -51,6 +71,6 @@ router.get("/location-search/:searchTerm", isAuthenticated, (req, res) => {
     .catch(err => {
       if (err) throw err;
     });
-});
+  })
 
 module.exports = router;
