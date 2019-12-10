@@ -23,7 +23,7 @@ router.get('/login', (req, res) => {
 
 
 router.get('/members', isAuthenticated, (req, res) => {
-  console.log(req.user);
+  //console.log(req.user);
   if (req.user) {
     const user = req.user.email.split('@');
     const username = user[0];
