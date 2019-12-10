@@ -3,27 +3,17 @@ module.exports = function(sequelize, DataTypes) {
   var Appointment = sequelize.define("Appointments", {
     appointment_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
 
-    day: {
-      type: DataTypes.STRING,
+    date: {
+      type: DataTypes.DATE,
       allowNull: false,
-      validate: {
-        is: ["^[a-z]+$", "i"], // will only allow letters
-        len: [1]
-      }
     },
 
-    // class_name: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    //   validate: {
-    //     len: [1]
-    //   }
-    // }
+  }, {
+      underscored: true
   });
 
   Appointment.associate = (models) => {
@@ -38,6 +28,12 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE'
     });
+
+    Appointment.belongsTo(models.Services, {
+        foreignKey: 'service_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
   }
   return Appointment;
 }
