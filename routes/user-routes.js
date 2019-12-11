@@ -4,7 +4,7 @@ const path = require('path');
 // Requiring our models for syncing
 const db = require('.././models');
 
-const Op = db.Sequelize.Op;
+// const Op = db.Sequelize.Op;
 
 //Require middleware for checking if a user is logged in
 const isAuthenticated = require('../config/isAuthenticated');
@@ -56,20 +56,7 @@ router.get('/members', isAuthenticated, (req, res) => {
   });
 
 
-  router.get('/facility/facilityId=:id', isAuthenticated, (req, res) => {
-    const facilityId = req.params.id;
-    db.Services.findAll({
-      where: {
-        business_id: facilityId,
-      },
-      group: ['day_of_week']
-    }).then(function(results) {
-      console.log(results)
-      // const facilitySched = {
-        
-      // }
-    })
-  })
+
 
   router.get('/class-search/:searchTerm', isAuthenticated, (req, res) => {
     const searchTerm = req.params.searchTerm;
