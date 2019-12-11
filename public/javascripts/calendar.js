@@ -2,9 +2,10 @@
 document.addEventListener("DOMContentLoaded", function() {
   $(document).on('click', '.class-day-lookup', (e) => {
       e.preventDefault();
-      e.target.attribute('id', 'btn-inverse')
+    //   e.target.attribute('id', 'btn-inverse')
       let classDay = e.target.getAttribute('data-day');
-      $.get('/facilityId=:id/classes')
+        console.log(classDay)
+      $.get('/facilityId=:id/classes/' + classDay)
   })
 });
 
