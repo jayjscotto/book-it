@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
-var path = require('path');
+const express = require('express');
+const router = express.Router();
+const path = require('path');
+// Requiring our models for syncing
+const db = require('.././models');
+
+// const Op = db.Sequelize.Op;
 
 //Require middleware for checking if a user is logged in
-var isAuthenticated = require("../config/isAuthenticated");
+const isAuthenticated = require('../config/isAuthenticated');
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -14,28 +18,72 @@ router.get('/', (req, res) => {
 });
 
 router.get('/sign-up', (req, res) => {
-  res.render('userauth', {signup: true});
+  res.render('userauth', { signup: true });
 });
 
 router.get('/login', (req, res) => {
-  res.render('userauth', {signup: false});
-})
-
+  res.render('userauth', { signup: false });
+});
 
 router.get('/members', isAuthenticated, (req, res) => {
-  //console.log(req.user);
-  if (req.user) {
-    const user = req.user.email.split('@');
-    const username = user[0];
-  
-    const userObj = {
-      email: username
-    }
-  
-    res.render('index', {username: userObj});
-  } else {
-    res.render('userauth', {signup: false});
-  }
+  const user = req.user.email.split('@');
+  const username = user[0];
+
+  const userObj = {
+    email: username
+  };
+
+  res.render('index', { username: userObj });
 });
+
+  router.get('/location-search/:searchTerm', isAuthenticated, (req, res) => {
+    const searchTerm = req.params.searchTerm;
+    db.Business.findAll({
+      where: {
+        state: searchTerm
+      }
+    })
+      .then(function(results) {
+        const searchRes = {
+          gym: results,
+          username: true
+        }
+        res.render('usersearch', searchRes);
+      })
+      .catch(err => {
+        if (err) throw err;
+      });
+  });
+
+
+
+
+  router.get('/class-search/:searchTerm', isAuthenticated, (req, res) => {
+    const searchTerm = req.params.searchTerm;
+
+    console.log(searchTerm);
+    
+    db.Services.findAll({
+      where: {
+        class_name: 'Small Group Weight Traning'
+        // class_name: {
+        //   [Op.like]: `%${searchTerm}`
+        // }
+      }
+    }).then(function(results) {
+
+      const searchRes = {
+        class: results,
+        username: true
+      }
+
+      console.log(searchRes);
+
+      res.render('usersearch', searchRes);
+    })
+    .catch(err => {
+      if (err) throw err;
+    });
+  })
 
 module.exports = router;
