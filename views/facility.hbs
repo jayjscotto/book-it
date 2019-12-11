@@ -2,8 +2,8 @@
     <div class="home-card">
         <div class="business-cal">
             <div class="business-info">
-                <h4>{{business.name}}NEWELL STRENGTH</h4>
-                <h6>{{business.street_address}}, {{business.city}}, {{business.state}} {{business.zipcode}}</h6>
+                <h4>{{facility.name}}</h4>
+                <h6>{{facility.street_address}}, {{facility.city}}, {{facility.state}} {{facility.zipcode}}</h6>
             </div>
             <div class="day-buttons">
                 <a data-day="0" class="btn class-day-lookup">Monday</a>
@@ -14,7 +14,16 @@
                 <a data-day="5" class="btn class-day-lookup">Saturday</a>
                 <a data-day="6" class="btn class-day-lookup">Sunday</a>
             </div>
-
+            <div id="classes">
+                {{#each class}}
+                    <div class="card">
+                        <h3>{{class_name}}</h3>
+                        <h6>Drop-in Rate: ${{cost}}</h6>
+                        <h6>Time: {{start_time}}</h6>
+                        <a data-id="{{id}}" class="btn appointment-book">BookFit</a>
+                    </div>
+                {{/each}}
+            </div>
         </div>
         <script type="text/javascript" src="/javascripts/moment.js"></script>
         <script type="text/javascript" src="/javascripts/calendar.js"></script>
