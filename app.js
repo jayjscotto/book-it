@@ -37,6 +37,7 @@ app.use(cookieParser(process.env.SECRET));
 app.use(
   cookieSession({
     key: "bookfit.sid.uid",
+    signed: false,
     secret: process.env.SECRET,
     cookie: {
       maxAge: 2678400000 // 31 days
