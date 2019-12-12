@@ -195,6 +195,30 @@ body {
         
         }
       }
+      div.business-cal {
+        div#classes{
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          div.card{
+            width: 40%;
+            margin: 1em auto;
+            padding: 1em;
+            border-radius: 10px;
+            a {
+              span {
+                color: colors(color4);
+                visibility: hidden;
+              }
+              &:hover{
+                span{
+                  visibility: visible;
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     div.cards {

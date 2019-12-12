@@ -1,12 +1,14 @@
 require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
+const exphbs = require('hbs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require("./config/passport");
 const isAuthenticated = require("./config/isAuthenticated");
+const moment = require('moment');
 
 const userRouter = require('./routes/user-routes');
 const apiRouter = require('./routes/api');
@@ -16,14 +18,23 @@ const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+//register moment helper
+exphbs.registerHelper('moment', require('helper-moment'));
+exphbs.registerHelper('formatDateTime',function(date,format){
+  var date = moment(date, 'H').format('h:mm a');
+  return date;
+})
 app.set('view engine', 'hbs');
 app.set('view options', { layout: 'layout' });
 
+
+
+// app.engine('hbs', engines.hbs);
 //middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.SECRET));
 
 //session to keep track of user state
 app.use(session({ secret: process.env.SECRET, resave: true, saveUninitialized: true }));
@@ -31,6 +42,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, '/public')));
+
+
 
 
 app.use('/', userRouter);

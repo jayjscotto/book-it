@@ -54,4 +54,14 @@ router.get("/user_data", isAuthenticated, (req, res) => {
   }
 });
 
+router.get('/class-info/:id', isAuthenticated, (req, res) => {
+  db.Services.findAll({
+    where: {
+      id: req.params.id
+    }
+  }).then(data => {
+    res.json(data);
+  });
+});
+
 module.exports = router;
