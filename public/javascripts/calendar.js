@@ -1,5 +1,4 @@
-
-document.addEventListener("DOMContentLoaded", function() {
+$(function() {
 
   $(document).on('click', '.class-day-lookup', function(e) {
       e.preventDefault();
