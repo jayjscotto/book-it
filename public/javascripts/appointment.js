@@ -10,9 +10,11 @@ $(function(e) {
         //class ID of facility class button
         const classId = e.target.getAttribute('data-id');
         console.log(classId)
-        $.get('/api/class-info/' + classId).then((data) => {
+        $.get('/api/class-info/' + classId)
+            .then((data) => {
             
-            console.log(data);
+                console.log(data);
+
         });;
     }));    
 });
