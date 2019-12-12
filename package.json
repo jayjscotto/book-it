@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "main": "./bin/www",
-  "license": "ISC",
   "scripts": {
     "start": "node ./bin/www",
     "lint": "eslint --quiet .",
@@ -39,5 +38,8 @@
     "cross-env": "^5.2.0",
     "mocha": "^6.1.4",
     "prettier": "^1.17.1"
+  },
+  "engines": {
+    "node": "12.13.0"
   }
 }
