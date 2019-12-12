@@ -6,25 +6,66 @@
                 <h6>{{facility.street_address}}, {{facility.city}}, {{facility.state}} {{facility.zipcode}}</h6>
             </div>
             <div class="day-buttons">
-                <a data-day="0" class="btn class-day-lookup">Monday</a>
-                <a data-day="1" class="btn class-day-lookup">Tuesday</a>
-                <a data-day="2" class="btn class-day-lookup">Wedsday</a>
-                <a data-day="3" class="btn class-day-lookup">Thursday</a>
-                <a data-day="4" class="btn class-day-lookup">Friday</a>
-                <a data-day="5" class="btn class-day-lookup">Saturday</a>
-                <a data-day="6" class="btn class-day-lookup">Sunday</a>
+                <a data-day="0" data-business={{facility.id}} class="btn class-day-lookup">Monday</a>
+                <a data-day="1" data-business={{facility.id}} class="btn class-day-lookup">Tuesday</a>
+                <a data-day="2" data-business={{facility.id}} class="btn class-day-lookup">Wedsday</a>
+                <a data-day="3" data-business={{facility.id}} class="btn class-day-lookup">Thursday</a>
+                <a data-day="4" data-business={{facility.id}} class="btn class-day-lookup">Friday</a>
+                <a data-day="5" data-business={{facility.id}} class="btn class-day-lookup">Saturday</a>
+                <a data-day="6" data-business={{facility.id}} class="btn class-day-lookup">Sunday</a>
+            </div>
+            <div class="date">
             </div>
             <div id="classes">
                 {{#each class}}
-                    <div class="card">
-                        <h3>{{class_name}}</h3>
-                        <h6>Drop-in Rate: ${{cost}}</h6>
-                        <h6>Time: {{start_time}}</h6>
-                        <a data-id="{{id}}" class="btn appointment-book">BookFit</a>
-                    </div>
+                <div class="card">
+                    <h3>{{class_name}}</h3>
+                    <h6>Drop-in Rate: ${{cost}}</h6>
+                    <h6>Time: {{formatDateTime start_time}}</h6>
+                    <a data-id="{{id}}" class="btn appointment-modal" data-toggle="modal"
+                        data-target="#modal">Book<span>F</span>it</a>
+                </div>
                 {{/each}}
+                
+                <div id="modal" class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Book Your Class</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="class-info">
+                                    <div id="class-info-left">
+                                        <h5 id="modal-class-title"></h5>
+                                        <h6 id="modal-class-time"></h6>
+                                    </div>
+                                    <div id="class-info-right">
+                                        <p id="modal-class-cost"></p>
+                                    </div>
+                                    <div id="modal-date">
+                                        <h6 id="modal-class-date">Date Of Class: </h6>
+                                    </div>
+                                    <a class="btn appointment-book">Book<span>F</span>it</a>
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+
+
         <script type="text/javascript" src="/javascripts/moment.js"></script>
         <script type="text/javascript" src="/javascripts/calendar.js"></script>
         <script type="text/javascript" src="/javascripts/appointment.js"></script>

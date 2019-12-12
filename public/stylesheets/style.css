@@ -241,6 +241,34 @@ body div.body-container div.home-card div.search-results div.card div.search-car
   max-width: 85%;
 }
 
+body div.body-container div.home-card div.business-cal div#classes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+body div.body-container div.home-card div.business-cal div#classes div.card {
+  width: 40%;
+  margin: 1em auto;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+body div.body-container div.home-card div.business-cal div#classes div.card a span {
+  color: #343a40;
+  visibility: hidden;
+}
+
+body div.body-container div.home-card div.business-cal div#classes div.card a:hover span {
+  visibility: visible;
+}
+
 body div.body-container div.cards {
   margin: 0.5em 1.5em;
   display: -webkit-box;

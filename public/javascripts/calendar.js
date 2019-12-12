@@ -1,14 +1,17 @@
 
 document.addEventListener("DOMContentLoaded", function() {
-  $(document).on('click', '.class-day-lookup', (e) => {
+
+  $(document).on('click', '.class-day-lookup', function(e) {
       e.preventDefault();
     //   e.target.attribute('id', 'btn-inverse')
-      let classDay = e.target.getAttribute('data-day');
-        console.log(classDay)
-      $.get('/facilityId=:id/classes/' + classDay)
-  })
-});
+    
+    //data attributes for URL
+      const classDay = e.target.getAttribute('data-day');
+      const businessId = e.target.getAttribute('data-business');
 
-    // append buttons for each Day
-        // on click each button, queries db for classes at that facility on that day
-    //append cla
+     // $.get('facility/facilityId='+ businessId + '/classes/' + classDay);
+
+      window.location.pathname = 'facility/facilityId=' + businessId +'/classes/' + classDay;
+  });
+
+});
