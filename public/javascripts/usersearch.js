@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     const locationSearchSubmit = $('#location-search-btn');
 
 
