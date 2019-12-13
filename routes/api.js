@@ -64,4 +64,9 @@ router.get('/class-info/:id', isAuthenticated, (req, res) => {
   });
 });
 
+router.post('/book-appointment', isAuthenticated, (req, res) => {
+  console.log(req.body);
+  
+})
+
 module.exports = router;

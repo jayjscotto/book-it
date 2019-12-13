@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".appointment-modal");
 
   //assign event listener to each button and get data from API
-  buttons.forEach(button =>
+  buttons.forEach(button => {
     button.addEventListener("click", e => {
       e.preventDefault();
 
@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const classId = e.target.getAttribute("data-id");
       console.log(classId);
       $.get("/api/class-info/" + classId).then(data => {
+        const serviceId = data[0].id;
+
         console.log(data);
         //select modal elements for data entry
         const title = document.getElementById("modal-class-title");
@@ -37,27 +39,54 @@ document.addEventListener("DOMContentLoaded", () => {
         let dbClassDay = data[0].day_of_week;
 
         const classDateGen = (goalDay, todayDate) => {
-            // if we haven't yet passed the day of the week 
-            if (todayDate <= goalDay) { 
-                // then just give me this week's instance of that day
-                return moment().isoWeekday(goalDay).format("dddd, MMMM Do YYYY");
-            } else {
-                // otherwise, give me *next week's* instance of that same day
-                return moment().add(1, 'weeks').isoWeekday(goalDay).format("dddd, MMMM Do, YYYY");
-            }
-        }
-        
+          // if we haven't yet passed the day of the week
+          if (todayDate <= goalDay) {
+            // then just give me this week's instance of that day
+            return moment()
+              .isoWeekday(goalDay)
+              .format("dddd, MMMM Do YYYY");
+          } else {
+            // otherwise, give me *next week's* instance of that same day
+            return moment()
+              .add(1, "weeks")
+              .isoWeekday(goalDay)
+              .format("dddd, MMMM Do, YYYY");
+          }
+        };
+
         //database's class day + 1
         //DB class day's are 0 - 6, Moment days are 1 - 7
         const dayINeed = data[0].day_of_week + 1;
         //today's date
         const today = moment().isoWeekday();
 
-        //append class date to date area in modal
-        classDateModal.textContent = `${classDateGen(dayINeed, today)} at ${classTime}`;
-      });
-    })
-  );
-});
+        const apptDate = classDateGen(dayINeed, today);
 
-const getClassDate = () => {};
+        //append class date to date area in modal
+        classDateModal.textContent = `${apptDate} at ${classTime}`;
+
+        //assign class ID to bookFit button for db query
+        const bookButton = document.querySelector(".modal #book-appointment-final")
+
+        bookButton.addEventListener("click", (e) => {
+   
+            e.stopPropagation();
+            e.preventDefault();
+          
+
+          const apptObj = {
+            service_id: serviceId,
+            appt_date: apptDate,
+            
+          };
+
+          $.ajax({
+            type: "POST",
+            url: "/api/book-appointment",
+            data: apptObj
+          }).then(function(){});
+        });
+      });
+    });
+  });
+});
