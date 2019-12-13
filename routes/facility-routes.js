@@ -31,7 +31,11 @@ router.get('/facilityId=:id/classes/:day', isAuthenticated, (req, res) => {
     order: [
       ['start_time']
     ],
-  }).then(results => {
+  }).then((results, err) => {
+
+    if(err) {
+      //RENDER ERROR PAGE
+    }
    
     const business = results[0].Business.dataValues;
  
