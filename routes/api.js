@@ -66,27 +66,33 @@ router.get("/class-info/:id", isAuthenticated, (req, res) => {
 });
 
 router.post("/book-appointment", isAuthenticated, (req, res) => {
-  console.log(req.body);
-
+  //info needed for appointment row
   const classId = req.body.service_id;
-
-  //NEED TO MOMENT THIS DATE
-  const apptDate = req.body.appt_date;
-  /////////////////////////////////////
-  ////////
-  ////////////////////////////
-
+  const apptDate = moment(req.body.appt_date, "dddd, MMMM Do, YYYY").format(
+    "MM/DD/YYYY"
+  );
   const userId = req.user.id;
 
+  //getting the business id for appointment
+  db.Services.findAll({
+    attributes: ["business_id"],
+    where: {
+      id: classId
+    }
+  }).then(function(data) {
+    const businessId = data[0].dataValues.business_id;
 
-  //INSERT INTO appointments(date, business_id, user_id, service_id)
-  //VALUES (
-    // apptDate, 
-    // business_id FROM services WHERE id = classId,
-    // userId,
-    // classId
-    // )
-
+    //Create query for the appointment
+    db.Appointments.create({
+      date: apptDate,
+      business_id: businessId,
+      user_id: userId,
+      service_id: classId
+    }).then(function(data) {
+      console.log(data);
+      res.status(200);
+    })
+  });
 });
 
 module.exports = router;
