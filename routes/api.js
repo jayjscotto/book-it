@@ -1,10 +1,11 @@
-var express = require("express");
-var router = express.Router();
-var db = require("../models");
-var passport = require("../config/passport");
+const express = require("express");
+const router = express.Router();
+const db = require("../models");
+const passport = require("../config/passport");
+const moment = require("moment");
 
 //Require middleware for checking if a user is logged in
-var isAuthenticated = require("../config/isAuthenticated");
+const isAuthenticated = require("../config/isAuthenticated");
 
 //Using passport.authenticate middleware & local strategy
 //if user has valid login credentials, send them to user homepage
@@ -66,6 +67,26 @@ router.get("/class-info/:id", isAuthenticated, (req, res) => {
 
 router.post("/book-appointment", isAuthenticated, (req, res) => {
   console.log(req.body);
+
+  const classId = req.body.service_id;
+
+  //NEED TO MOMENT THIS DATE
+  const apptDate = req.body.appt_date;
+  /////////////////////////////////////
+  ////////
+  ////////////////////////////
+
+  const userId = req.user.id;
+
+
+  //INSERT INTO appointments(date, business_id, user_id, service_id)
+  //VALUES (
+    // apptDate, 
+    // business_id FROM services WHERE id = classId,
+    // userId,
+    // classId
+    // )
+
 });
 
 module.exports = router;
