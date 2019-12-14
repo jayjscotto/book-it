@@ -54,7 +54,7 @@ router.get("/user_data", isAuthenticated, (req, res) => {
   }
 });
 
-router.get('/class-info/:id', isAuthenticated, (req, res) => {
+router.get("/class-info/:id", isAuthenticated, (req, res) => {
   db.Services.findAll({
     where: {
       id: req.params.id
@@ -64,9 +64,8 @@ router.get('/class-info/:id', isAuthenticated, (req, res) => {
   });
 });
 
-router.post('/book-appointment', isAuthenticated, (req, res) => {
+router.post("/book-appointment", isAuthenticated, (req, res) => {
   console.log(req.body);
-  
-})
+});
 
 module.exports = router;

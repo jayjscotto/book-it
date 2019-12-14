@@ -25,8 +25,10 @@ exphbs.registerHelper("formatDateTime", function(date, format) {
   var date = moment(date, "H").format("h:mm a");
   return date;
 });
+
 app.set("view engine", "hbs");
 app.set("view options", { layout: "layout" });
+exphbs.registerPartials(__dirname + '/views/partials');
 
 // app.engine('hbs', engines.hbs);
 //middleware
@@ -57,6 +59,7 @@ app.use("/", userRouter);
 app.use("/api", apiRouter);
 app.use("/facility", facilityRouter);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -70,7 +73,14 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+
+    let userObj = {};
+
+    if (req.user) {
+      userObj.username = true;
+    };
+
+  res.render("error", userObj);
 });
 
 module.exports = app;

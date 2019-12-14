@@ -18,7 +18,7 @@
 <body>
   <div id="bg"></div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <h1><span class="title">B</span>ook<span class="title">F</span>it</h1>
+    <h1 href="https://bookfit.herokuapp.com"><span class="title">B</span>ook<span class="title">F</span>it</h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -41,16 +41,51 @@
         </li>
         {{/if}}
         <li class="nav-item">
-          <a class="nav-link" href="/about"> About </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/help"> Help </a>
+          <a class="nav-link" data-toggle="modal" data-target="#help-modal"> Help </a>
         </li>
       </ul>
     </div>
   </nav>
 
   {{{body}}}
+  
+
+{{!-- HELP MODAL --}}
+  <div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">About BookFit</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-about">
+          <h3>BookFit</h3>
+          <p>BookFit is a fitness scheduling app that allows you to find gym's or other facilities in your area and book appointments/classes at each facility based on their class offerings.</p>
+          <p>BookFit strives to provide up to date, accurate information based on the offerings of the facilities listed on this site.</p>
+          <h3>Help</h3>
+          <Then,>Begin by completing a search based on your current location. Then, select the desired facility you wish to find appointments at.</p>
+          <p>Then select the day of the week you wish to book an appointment for, and select your appointment and move through to booking.</p>
+          <p>Payment can be provided at the facility at the time of the class.</p>
+
+          <p>To CANCEL: Please go to "View My Appointments", on the home page, scroll to the appointment you would like to cancel, and click "Cancel Appointment"</p>
+        </div>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <a data-dismiss="modal"  class="btn appt-book">OK, I'm All Set</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <footer>
+    <div class="footer-content">
+      <h5 href="https://github.com/jayjscotto/book-it">BookFit on Github!</h5> 
+  </footer>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

@@ -55,9 +55,6 @@ router.get('/members', isAuthenticated, (req, res) => {
       });
   });
 
-
-
-
   router.get('/class-search/:searchTerm', isAuthenticated, (req, res) => {
     const searchTerm = req.params.searchTerm;
 
@@ -84,6 +81,10 @@ router.get('/members', isAuthenticated, (req, res) => {
     .catch(err => {
       if (err) throw err;
     });
-  })
+  });
+
+
+  //add view my appointments route
+  
 
 module.exports = router;

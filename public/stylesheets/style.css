@@ -69,6 +69,10 @@ body nav h1 {
   color: #00e5f5;
 }
 
+body nav h1:hover {
+  cursor: pointer;
+}
+
 body nav h1 span.title {
   font-size: 1.35em;
 }
@@ -95,6 +99,77 @@ body nav div.navbar-collapse ul li a:hover {
   background-color: #00e5f5;
   color: black !important;
   cursor: pointer;
+}
+
+body div#help-modal {
+  margin-top: 3em;
+}
+
+body div#help-modal a.btn {
+  background-color: #343a40;
+  color: #00e5f5;
+  margin: 0.5em 1em;
+}
+
+body div#help-modal a.btn:hover {
+  background-color: #00e5f5;
+  color: black !important;
+  cursor: pointer;
+}
+
+body div#help-modal div.modal-content {
+  background: #f5f7f7;
+}
+
+body div#help-modal div.modal-content h2.modal-title {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-left: 0.75em;
+}
+
+body footer {
+  margin-top: auto;
+  background-color: #343a40;
+  width: 100%;
+  padding: 1em;
+  color: #00e5f5;
+  text-align: center;
+  -webkit-box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);
+          box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);
+}
+
+body footer div.footer-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 0 auto;
+  text-align: center;
+  width: 50%;
+}
+
+body footer div.footer-content h5 {
+  margin: 0 auto;
+}
+
+body footer div.footer-content h5:hover {
+  cursor: pointer;
+}
+
+body div.error {
+  margin: 8em auto;
+  text-align: center;
+}
+
+body div.error img {
+  width: 50%;
+}
+
+body div.error h1 {
+  font-size: 4em;
 }
 
 body div.body-container {
@@ -125,7 +200,7 @@ body div.body-container div.home-card {
   height: fit-content;
   padding: 20px;
   width: 90%;
-  margin: 0 auto 1em auto;
+  margin: 1.5em auto;
   border: none;
   border-radius: 10px;
   -webkit-box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -274,7 +349,7 @@ body div.body-container div.home-card div.business-cal div#classes div.card {
 }
 
 body div.body-container div.cards {
-  margin: 0.5em 1.5em;
+  margin: 0.5em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -284,24 +359,14 @@ body div.body-container div.cards {
           flex-direction: column;
 }
 
-@media (min-width: 768px) {
-  body div.body-container div.cards {
-    margin: 0.5em 7em;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
-}
-
 body div.body-container div.cards section.card {
   background: #f5f7f7;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   padding: 20px;
-  width: 90%;
-  margin: 2em auto;
+  width: 95%;
+  margin: 0.5em auto;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   border: none;
@@ -310,33 +375,33 @@ body div.body-container div.cards section.card {
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-body div.body-container div.cards section.card h3, body div.body-container div.cards section.card p {
+body div.body-container div.cards section.card h3 {
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  margin: 0.5em auto 0 auto;
+  margin: 0.5em auto;
 }
 
-body div.body-container div.cards section.card input {
+body div.body-container div.cards section.card .search-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+body div.body-container div.cards section.card .search-text p {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0.5em 0.5em 0.5em auto;
+}
+
+body div.body-container div.cards section.card .search-text input {
   border-radius: 10px;
-}
-
-@media (min-width: 768px) {
-  body div.body-container div.cards section.card {
-    width: 45%;
-  }
 }
 
 body div.body-container div.cards section.card ul li {
   list-style: none;
-}
-
-body footer {
-  margin-top: auto;
-  background-color: #343a40;
-  padding: 0.5em;
-  color: #00e5f5;
-  text-align: center;
-  -webkit-box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);
-          box-shadow: 0px -4px 16px -5px rgba(181, 154, 181, 0.97);
 }
 /*# sourceMappingURL=style.css.map */
