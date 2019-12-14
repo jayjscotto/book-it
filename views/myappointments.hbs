@@ -1,0 +1,10 @@
+<div class="home-card">
+    {{#each appointment}}
+        <div class="card my-appt-card">
+            <h4>Class: {{name}}</h4>
+            <p>{{date}}</p>
+            <p>${{cost}}</p>
+            <a data-appointment={{appointment_id}} class="btn">Cancel It</a>
+        </div>
+    {{/each}}
+</div>

@@ -66,25 +66,31 @@ document.addEventListener("DOMContentLoaded", () => {
         classDateModal.textContent = `${apptDate} at ${classTime}`;
 
         //assign class ID to bookFit button for db query
-        const bookButton = document.querySelector(".modal #book-appointment-final")
+        const bookButton = document.querySelector(
+          ".modal #book-appointment-final"
+        );
 
-        bookButton.addEventListener("click", (e) => {
-   
-            e.stopPropagation();
-            e.preventDefault();
-          
+        bookButton.addEventListener("click", e => {
+          e.stopPropagation();
+          e.preventDefault();
 
           const apptObj = {
             service_id: serviceId,
-            appt_date: apptDate,
-            
+            appt_date: apptDate
           };
+
+          //booking gif
 
           $.ajax({
             type: "POST",
             url: "/api/book-appointment",
             data: apptObj
-          }).then(function(){});
+          }).then(function(results) {
+            //dynamically confirm appointment's been booked
+          }).catch(function(err) {
+            //dynamically advise the user already has an appointment at that time
+            console.log(err);
+          });
         });
       });
     });

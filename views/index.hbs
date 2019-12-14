@@ -9,7 +9,7 @@
             <hr class="my-4">
             <div class="user-auth">
                 {{#if username}}
-
+                <a id="view-user-appointments" class="btn" role="button"> View My Appointments </a>
                 {{else}}
                 <form id="login" class="login-form">
                     <label for="login">E-mail</label>
@@ -27,9 +27,6 @@
         </div>
         {{#if username}}
 
-        <div id="user-appts" class="home-card">
-            <a id="user-appointments" class="btn" role="button"> View My Appointments </a>
-        </div>
 
         <div class="cards">
             <section class="card">

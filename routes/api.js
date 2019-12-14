@@ -3,7 +3,8 @@ const router = express.Router();
 const db = require("../models");
 const passport = require("../config/passport");
 const moment = require("moment");
-
+const Sequelize = require("sequelize");
+const Op = Sequelize.Op;
 //Require middleware for checking if a user is logged in
 const isAuthenticated = require("../config/isAuthenticated");
 
@@ -73,26 +74,55 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
   );
   const userId = req.user.id;
 
-  //getting the business id for appointment
-  db.Services.findAll({
-    attributes: ["business_id"],
+  //query appointments model to find possible conflicting appointments at that time
+  db.Appointments.findAll({
     where: {
-      id: classId
-    }
-  }).then(function(data) {
-    const businessId = data[0].dataValues.business_id;
-
-    //Create query for the appointment
-    db.Appointments.create({
-      date: apptDate,
-      business_id: businessId,
       user_id: userId,
-      service_id: classId
-    }).then(function(data) {
-      console.log(data);
-      res.status(200);
-    })
+      date: {
+        [Op.like]: `%${apptDate}`
+      }
+    },
+    attributes: ["date", "service_id"],
+    include:[{
+      model: db.Services,
+      where: {
+        id: classId
+      }
+    }]
+  }).then(function(response) {
+    console.log(response);
+    console.log("---------------------");
+    if (response.length === 0) {
+      db.Services.findAll({
+        attributes: ["business_id"],
+        where: {
+          id: classId
+        }
+      }).then(function(data) {
+        const businessId = data[0].dataValues.business_id;
+
+        //Create query for the appointment
+        db.Appointments.create({
+          date: apptDate,
+          business_id: businessId,
+          user_id: userId,
+          service_id: classId
+        }).then(function(data) {
+          console.log(data);
+          res.status(200);
+        });
+      });
+    } else {
+      //show modal that says appointment at that date and time is already created
+      res.status(500).send("Appointment already exists at that time");
+    }
   });
 });
+//check if appoint is booked at current date.
+//if no, book
+//then run findbusiness id query and promise query to book
+//if yes, error modal pops up
+
+//getting the business id for appointment
 
 module.exports = router;
