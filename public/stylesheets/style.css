@@ -199,7 +199,7 @@ body div.body-container div.home-card {
   height: -moz-fit-content;
   height: fit-content;
   padding: 20px;
-  width: 90%;
+  width: 100%;
   margin: 1.5em auto;
   border: none;
   border-radius: 10px;
@@ -209,6 +209,12 @@ body div.body-container div.home-card {
 
 body div.body-container div.home-card h1.h1 {
   font-size: 3em;
+}
+
+body div.body-container div.home-card div.my-appt-card {
+  width: 80%;
+  margin: 1.5em auto;
+  padding: 1em;
 }
 
 body div.body-container div.home-card div.user-auth {
@@ -399,6 +405,10 @@ body div.body-container div.cards section.card .search-text p {
 
 body div.body-container div.cards section.card .search-text input {
   border-radius: 10px;
+}
+
+body div.body-container div.cards section.card .search-text a {
+  margin: auto 0 auto 0.5em;
 }
 
 body div.body-container div.cards section.card ul li {

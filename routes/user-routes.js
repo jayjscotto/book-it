@@ -4,7 +4,7 @@ const path = require("path");
 // Requiring our models for syncing
 const db = require(".././models");
 const Sequelize = require("sequelize");
-
+const moment = require("moment");
 // const Op = db.Sequelize.Op;
 
 //Require middleware for checking if a user is logged in
@@ -103,10 +103,28 @@ router.get("/my-bookfit-appts", (req, res) => {
     order: [["date"]]
   }).then((data) => {
 
+    //define handlebars object
     const myAppointments = {
-      appointment: data,
+      appointment: [],
+      pastAppointment: [],
       username: true
     };
+
+    //iterate over response object from db
+    for(let appt in data) {
+      //get the difference in days between today 
+      let num = moment().diff(data[appt].date, "days")
+      //if the difference is a negative number
+      //ie. has the day not yet already passed
+      if (num < 0) {
+        console.log(data[appt]);
+        //then, push the appointment object to the appointments array
+        myAppointments.appointment.push(data[appt]);
+      } else {
+        //otherwise, push the appointment object to the past appointments array
+        myAppointments.pastAppointment.push(data[appt]);
+      }
+    }
 
     console.log(myAppointments);
 

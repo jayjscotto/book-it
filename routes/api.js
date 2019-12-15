@@ -75,24 +75,25 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
   const userId = req.user.id;
 
   //query appointments model to find possible conflicting appointments at that time
-  db.Appointments.findAll({
-    where: {
-      user_id: userId,
-      date: {
-        [Op.like]: `%${apptDate}`
-      }
-    },
-    attributes: ["date", "service_id"],
-    include:[{
-      model: db.Services,
-      where: {
-        id: classId
-      }
-    }]
-  }).then(function(response) {
-    console.log(response);
-    console.log("---------------------");
-    if (response.length === 0) {
+  // db.Appointments.findAll({
+  //   where: {
+  //     user_id: userId,
+  //     date: {
+  //       [Op.like]: `%${apptDate}`
+  //     }
+  //   },
+  //   attributes: ["date", "service_id"],
+  //   include:[{
+  //     model: db.Services,
+  //     where: {
+  //       id: classId
+  //     },
+  //     //attributes: [["start_time"]]
+  //   }]
+  // }).then(function(response) {
+  //   console.log(response);
+  //   console.log("---------------------");
+  //   if (response.length === 0) {
       db.Services.findAll({
         attributes: ["business_id"],
         where: {
@@ -108,15 +109,15 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
           user_id: userId,
           service_id: classId
         }).then(function(data) {
-          console.log(data);
+          console.log(`hey ${data}`);
           res.status(200);
         });
       });
-    } else {
-      //show modal that says appointment at that date and time is already created
-      res.status(500).send("Appointment already exists at that time");
-    }
-  });
+  //   } else {
+  //     //show modal that says appointment at that date and time is already created
+  //     res.status(500).send("Appointment already exists at that time");
+  //   }
+  // });
 });
 //check if appoint is booked at current date.
 //if no, book

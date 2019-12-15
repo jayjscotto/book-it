@@ -183,7 +183,7 @@ body {
       text-align: center;
       height: fit-content;
       padding: 20px;
-      width: 90%;
+      width: 100%;
       margin: 1.5em auto;
       border: none;
       border-radius: 10px;
@@ -192,6 +192,14 @@ body {
       h1.h1 {
         font-size: 3em;
       }
+
+      
+      div.my-appt-card {
+        width: 80%;
+        margin: 1.5em auto;
+        padding: 1em;
+      }
+
       div.user-auth {
         display: flex;
         flex-direction: column;
@@ -318,6 +326,10 @@ body {
 
           input {
             border-radius: 10px;
+          }
+
+          a {
+            margin: auto 0 auto 0.5em;
           }
         }
 

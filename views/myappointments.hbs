@@ -1,10 +1,28 @@
-<div class="home-card">
-    {{#each appointment}}
-        <div class="card my-appt-card">
-            <h4>Class: {{name}}</h4>
-            <p>{{date}}</p>
-            <p>${{cost}}</p>
-            <a data-appointment={{appointment_id}} class="btn">Cancel It</a>
-        </div>
-    {{/each}}
+<div class="body-container">
+    <div class="home-card">
+        <h2>My Upcoming Appointments</h2>
+        <hr class="my-4">
+        {{#each appointment}}
+            <div class="card my-appt-card">
+                <h4>Class: {{Service.class_name}}</h4>
+                <p>{{date}} {{formatDateTime Service.start_time}}</p>
+                <p>${{Service.cost}}</p>
+
+                <p>Location: {{Business.name}} {{Business.address}}, {{Business.city}} {{Business.state}}, {{Business.zipcode}}</p>
+                <a data-appointment={{appointment_id}} class="btn">Cancel It</a>
+            </div>
+        {{/each}}
+        <h2>My Past Appointments</h2>
+        <hr class="my-4">
+        {{#each pastAppointment}}
+            <div class="card my-appt-card">
+                <h4>Class: {{Service.class_name}}</h4>
+                <p>{{date}} {{formatDateTime Service.start_time}}</p>
+                <p>${{Service.cost}}</p>
+
+                <p>Location: {{Business.name}} {{Business.address}}, {{Business.city}} {{Business.state}}, {{Business.zipcode}}</p>
+                <a data-appointment={{appointment_id}} class="btn">Cancel It</a>
+            </div>
+        {{/each}}
+    </div>
 </div>
