@@ -11,7 +11,7 @@ const isAuthenticated = require("../config/isAuthenticated");
 
 const classDateGen = (goalDay, todayDate) => {
   // if we haven't yet passed the day of the week
-  if (todayDate <= goalDay) {
+  if (todayDate < goalDay) {
     // then just give me this week's instance of that day
     return momentTime()
       .isoWeekday(goalDay)
@@ -40,22 +40,22 @@ router.get("/facilityId=:id/classes/:day", isAuthenticated, (req, res) => {
     order: [["start_time"]]
   }).then((results, err) => {
     if (results.length === 0) {
-      res.render('error', {username: true})
+      res.render("error", { username: true });
     }
 
     const business = results[0].Business.dataValues;
 
     const today = momentTime().isoWeekday();
 
+
     let day = req.params.day;
     day++;
 
-    console.log(`Today is number ${today}`);
-    console.log(`Day is number ${day}`);
+    console.log(today)
+    console.log(day)
 
-    const dayClass = classDateGen(day , today);
-    
-    console.log(`Hello ${dayClass}`);
+    const dayClass = classDateGen(day, today);
+
     const classDay = {
       class: results,
       facility: business,

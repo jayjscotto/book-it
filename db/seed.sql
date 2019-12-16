@@ -258,6 +258,6 @@ INSERT INTO services (class_name, cost, start_time, day_of_week, business_id) VA
 ('Metabolic Enhancement Training', '15.00', '18:00', '5', '2'),
 
 
-SUNDAY NEWELL BOTH
+-- SUNDAY NEWELL BOTH
 ('Specialized Lift Training', '20.00', '11:00', '6', '1'),
 ('Specialized Lift Training', '20.00', '11:00', '6', '2');

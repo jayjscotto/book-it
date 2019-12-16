@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const classDateGen = (goalDay, todayDate) => {
     // if we haven't yet passed the day of the week
-    if (todayDate <= goalDay) {
+    if (todayDate < goalDay) {
       // then just give me this week's instance of that day
       return moment()
         .isoWeekday(goalDay)

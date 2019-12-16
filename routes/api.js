@@ -73,6 +73,7 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
     "MM/DD/YYYY"
   );
   const userId = req.user.id;
+  console.log(userId);
 
   //query appointments model to find possible conflicting appointments at that time
   // db.Appointments.findAll({
@@ -110,6 +111,7 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
       service_id: classId
     }).then(function(data) {
       res.status(200).send();
+      console.log(data)
     });
   });
   //   } else {

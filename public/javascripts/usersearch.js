@@ -5,8 +5,9 @@ $(function() {
     locationSearchSubmit.on('submit', (e) => {
         e.preventDefault();
         const locationSearchData = $('#facility-search').val();
+        const locationSearchParam = $("#facility-search-param").val();;
 
-        window.location = `/location-search/${locationSearchData}`
+        window.location = `/location-search/${locationSearchParam}/${locationSearchData}`
         //getSearchLocation(locationSearchData);
         
     });

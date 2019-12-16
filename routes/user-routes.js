@@ -37,12 +37,30 @@ router.get("/members", isAuthenticated, (req, res) => {
   res.render("index", { username: userObj });
 });
 
-router.get("/location-search/:searchTerm", isAuthenticated, (req, res) => {
+router.get("/location-search/:searchParam/:searchTerm", isAuthenticated, (req, res) => {
   const searchTerm = req.params.searchTerm;
-  db.Business.findAll({
-    where: {
-      state: searchTerm
+  const searchParam = req.params.searchParam;
+  console.log(searchParam)
+
+  let where = {}
+
+  const whereGen = (searchTerm, searchParam) => {
+    switch(searchParam) {
+      case "Facility Name":
+        return where.name = searchParam;
+      case "City":
+        return where.city = searchParam;
+      case "State":
+        return where.state = searchParam;
+      case "Zip%20Code":
+        return where.zipcode = searchParam;
     }
+  }
+  whereGen();
+  console.log(where);
+
+  db.Business.findAll({
+    where: whereGen()
   })
     .then(function(results) {
       const searchRes = {
@@ -85,7 +103,8 @@ router.get("/class-search/:searchTerm", isAuthenticated, (req, res) => {
 });
 
 //view my appointments route
-router.get("/my-bookfit-appts", (req, res) => {
+router.get("/my-bookfit-appts", isAuthenticated, (req, res) => {
+  console.log(req.user);
   db.Appointments.findAll({
     where: {
       user_id: req.user.id
@@ -102,7 +121,7 @@ router.get("/my-bookfit-appts", (req, res) => {
     ],
     order: [["date"]]
   }).then((data) => {
-
+    console.log(data);
     //define handlebars object
     const myAppointments = {
       appointment: [],
@@ -114,10 +133,11 @@ router.get("/my-bookfit-appts", (req, res) => {
     for(let appt in data) {
       //get the difference in days between today 
       let num = moment().diff(data[appt].date, "days")
+      console.log(num)
       //if the difference is a negative number
       //ie. has the day not yet already passed
       if (num <= 0) {
-        console.log(data[appt]);
+        console.log(`appt ${data[appt]} ${appt}`);
         //then, push the appointment object to the appointments array
         myAppointments.appointment.push(data[appt]);
       } else {

@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Appointment.belongsTo(models.User, {
-      foreignKey: 'user_id',
+      foreignKey: "user_id",
       onDelete: 'CASCADE',
       onUpdate: 'CASCADE'
     });

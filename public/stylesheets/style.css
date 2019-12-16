@@ -420,8 +420,12 @@ body div.body-container div.cards section.card .search-text p {
   margin: 0.5em 0.5em 0.5em auto;
 }
 
-body div.body-container div.cards section.card .search-text input {
-  border-radius: 10px;
+body div.body-container div.cards section.card .search-text input, body div.body-container div.cards section.card .search-text select {
+  border-radius: 5px;
+}
+
+body div.body-container div.cards section.card .search-text select {
+  margin-right: 1em;
 }
 
 body div.body-container div.cards section.card .search-text a {
