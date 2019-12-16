@@ -22,7 +22,7 @@ body {
   min-height: 100%;
 }
 
-body a {
+body a, body button {
   font-weight: 500;
   letter-spacing: 1.5px;
   border-radius: 10px;
@@ -177,14 +177,14 @@ body div.body-container {
   margin: 0 auto;
 }
 
-body div.body-container a {
-  margin: 0.5em auto;
+body div.body-container a, body div.body-container button {
+  margin: auto;
   background-color: #343a40;
   color: #00e5f5;
   font-weight: 500;
 }
 
-body div.body-container a:hover {
+body div.body-container a:hover, body div.body-container button:hover {
   opacity: 0.8;
   background-color: #00e5f5;
   color: black;
@@ -215,6 +215,15 @@ body div.body-container div.home-card div.my-appt-card {
   width: 80%;
   margin: 1.5em auto;
   padding: 1em;
+}
+
+body div.body-container div.home-card div.my-appt-card h3, body div.body-container div.home-card div.my-appt-card p, body div.body-container div.home-card div.my-appt-card h5 {
+  text-align: left;
+  margin-bottom: 0;
+}
+
+body div.body-container div.home-card div.my-appt-card p {
+  font-size: 1.1em;
 }
 
 body div.body-container div.home-card div.user-auth {
@@ -322,6 +331,10 @@ body div.body-container div.home-card div.search-results div.card div.search-car
   max-width: 85%;
 }
 
+body div.body-container div.home-card div.business-cal a {
+  margin: 0.5em auto;
+}
+
 body div.body-container div.home-card div.business-cal a span {
   color: #343a40;
   visibility: hidden;
@@ -363,6 +376,10 @@ body div.body-container div.cards {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+body div.body-container div.cards input {
+  margin-right: 1em;
 }
 
 body div.body-container div.cards section.card {

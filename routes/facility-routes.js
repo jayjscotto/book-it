@@ -4,19 +4,28 @@ const path = require("path");
 // Requiring our models for syncing
 const db = require(".././models");
 const moment = require("helper-moment");
+const momentTime = require("moment");
 
 //Require middleware for checking if a user is logged in
 const isAuthenticated = require("../config/isAuthenticated");
 
-router.get("/facilityId=:id/classes/:day", isAuthenticated, (req, res) => {
-  // let day = moment().weekday() - 1;
-  console.log(req.params);
-  //console.log(`weekday: ${moment().weekday()}`)
-  console.log(`busines: ${req.params.id}`);
-  //need to conditionally update route to IF day param exists
-  //query day
-  //if not, use moment.weekday
+const classDateGen = (goalDay, todayDate) => {
+  // if we haven't yet passed the day of the week
+  if (todayDate <= goalDay) {
+    // then just give me this week's instance of that day
+    return momentTime()
+      .isoWeekday(goalDay)
+      .format("dddd, MMMM Do YYYY");
+  } else {
+    // otherwise, give me *next week's* instance of that same day
+    return momentTime()
+      .add(1, "weeks")
+      .isoWeekday(goalDay)
+      .format("dddd, MMMM Do, YYYY");
+  }
+};
 
+router.get("/facilityId=:id/classes/:day", isAuthenticated, (req, res) => {
   db.Services.findAll({
     where: {
       business_id: req.params.id,
@@ -36,10 +45,22 @@ router.get("/facilityId=:id/classes/:day", isAuthenticated, (req, res) => {
 
     const business = results[0].Business.dataValues;
 
-    let classDay = {
+    const today = momentTime().isoWeekday();
+
+    let day = req.params.day;
+    day++;
+
+    console.log(`Today is number ${today}`);
+    console.log(`Day is number ${day}`);
+
+    const dayClass = classDateGen(day , today);
+    
+    console.log(`Hello ${dayClass}`);
+    const classDay = {
       class: results,
       facility: business,
-      username: true
+      username: true,
+      viewDate: dayClass
     };
     res.render("facility", classDay);
   });

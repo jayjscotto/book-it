@@ -3,26 +3,43 @@
         <h2>My Upcoming Appointments</h2>
         <hr class="my-4">
         {{#each appointment}}
-            <div class="card my-appt-card">
-                <h4>Class: {{Service.class_name}}</h4>
-                <p>{{date}} {{formatDateTime Service.start_time}}</p>
-                <p>${{Service.cost}}</p>
-
-                <p>Location: {{Business.name}} {{Business.address}}, {{Business.city}} {{Business.state}}, {{Business.zipcode}}</p>
-                <a data-appointment={{appointment_id}} class="btn">Cancel It</a>
-            </div>
+        <div class="card my-appt-card">
+            <h3>{{Service.class_name}}</h3>
+            <h5>{{date}} at {{formatDateTime Service.start_time}}</h5>
+            <p>Cost: ${{Service.cost}}</p>
+            <p>Location: {{Business.name}} {{Business.address}}, {{Business.city}} {{Business.state}},
+                {{Business.zipcode}}</p>
+            <a data-appointment={{appointment_id}} class="btn cancel-appt">Cancel It</a>
+        </div>
         {{/each}}
         <h2>My Past Appointments</h2>
         <hr class="my-4">
         {{#each pastAppointment}}
-            <div class="card my-appt-card">
-                <h4>Class: {{Service.class_name}}</h4>
-                <p>{{date}} {{formatDateTime Service.start_time}}</p>
-                <p>${{Service.cost}}</p>
+        <div class="card my-appt-card">
+            <h4>Class: {{Service.class_name}}</h4>
+            <p>{{date}} {{formatDateTime Service.start_time}}</p>
+            <p>${{Service.cost}}</p>
 
-                <p>Location: {{Business.name}} {{Business.address}}, {{Business.city}} {{Business.state}}, {{Business.zipcode}}</p>
-                <a data-appointment={{appointment_id}} class="btn">Cancel It</a>
-            </div>
+            <p>Location: {{Business.name}} {{Business.address}}, {{Business.city}} {{Business.state}},
+                {{Business.zipcode}}</p>
+            <a data-appointment={{appointment_id}} class="btn book-again">Cancel It</a>
+        </div>
         {{/each}}
+    </div>
+
+    <div id="cancel-modal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center">Confirmation</h5>
+                </div>
+                <div class="modal-body text-center">
+                    <h5>Your appointment has been cancelled.</h5>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn cancel-btn" data-dismiss="modal">Continue Booking</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

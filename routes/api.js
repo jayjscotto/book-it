@@ -94,25 +94,24 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
   //   console.log(response);
   //   console.log("---------------------");
   //   if (response.length === 0) {
-      db.Services.findAll({
-        attributes: ["business_id"],
-        where: {
-          id: classId
-        }
-      }).then(function(data) {
-        const businessId = data[0].dataValues.business_id;
+  db.Services.findAll({
+    attributes: ["business_id"],
+    where: {
+      id: classId
+    }
+  }).then(function(data) {
+    const businessId = data[0].dataValues.business_id;
 
-        //Create query for the appointment
-        db.Appointments.create({
-          date: apptDate,
-          business_id: businessId,
-          user_id: userId,
-          service_id: classId
-        }).then(function(data) {
-          console.log(`hey ${data}`);
-          res.status(200);
-        });
-      });
+    //Create query for the appointment
+    db.Appointments.create({
+      date: apptDate,
+      business_id: businessId,
+      user_id: userId,
+      service_id: classId
+    }).then(function(data) {
+      res.status(200).send();
+    });
+  });
   //   } else {
   //     //show modal that says appointment at that date and time is already created
   //     res.status(500).send("Appointment already exists at that time");
@@ -124,6 +123,18 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
 //then run findbusiness id query and promise query to book
 //if yes, error modal pops up
 
-//getting the business id for appointment
+router.delete("/user/appt-cancel", (req, res) => {
+  let userId = req.user.id;
+  let apptId = req.body.appt_id;
+  db.Appointments.destroy({
+    where: {
+      appointment_id: apptId,
+      user_id: userId
+    }
+  }).then(response => {
+    res.status(200).send();
+  })
+  
+});
 
 module.exports = router;

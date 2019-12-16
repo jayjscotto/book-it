@@ -116,7 +116,7 @@ router.get("/my-bookfit-appts", (req, res) => {
       let num = moment().diff(data[appt].date, "days")
       //if the difference is a negative number
       //ie. has the day not yet already passed
-      if (num < 0) {
+      if (num <= 0) {
         console.log(data[appt]);
         //then, push the appointment object to the appointments array
         myAppointments.appointment.push(data[appt]);
