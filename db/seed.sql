@@ -1,4 +1,3 @@
-USE bookit;
 
 ALTER TABLE businesses
 MODIFY created_at DATETIME

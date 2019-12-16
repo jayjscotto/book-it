@@ -101,10 +101,6 @@ body nav div.navbar-collapse ul li a:hover {
   cursor: pointer;
 }
 
-body div#help-modal {
-  margin-top: 3em;
-}
-
 body div#help-modal a.btn {
   background-color: #343a40;
   color: #00e5f5;
