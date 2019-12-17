@@ -74,6 +74,7 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
   );
   const userId = req.user.id;
   console.log('Booking....')
+  console.log(`user: ${req.user}`);
   console.log(`uid: ${userId}`);
   console.log(`class: ${classId}`);
   console.log(`apptDate: ${apptDate}`);
