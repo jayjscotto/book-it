@@ -73,28 +73,17 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
     "MM/DD/YYYY"
   );
   const userId = req.user.id;
-  console.log(userId);
+  console.log('Booking....')
+  console.log(`uid: ${userId}`);
+  console.log(`class: ${classId}`);
+  console.log(`apptDate: ${apptDate}`);
+  
+  /////TODO
+  //check if appoint is booked at current date.
+  //if no, book
+  //then run findbusiness id query and promise query to book
+  //if yes, error modal pops up
 
-  //query appointments model to find possible conflicting appointments at that time
-  // db.Appointments.findAll({
-  //   where: {
-  //     user_id: userId,
-  //     date: {
-  //       [Op.like]: `%${apptDate}`
-  //     }
-  //   },
-  //   attributes: ["date", "service_id"],
-  //   include:[{
-  //     model: db.Services,
-  //     where: {
-  //       id: classId
-  //     },
-  //     //attributes: [["start_time"]]
-  //   }]
-  // }).then(function(response) {
-  //   console.log(response);
-  //   console.log("---------------------");
-  //   if (response.length === 0) {
   db.Services.findAll({
     attributes: ["business_id"],
     where: {
@@ -114,16 +103,9 @@ router.post("/book-appointment", isAuthenticated, (req, res) => {
       console.log(data)
     });
   });
-  //   } else {
-  //     //show modal that says appointment at that date and time is already created
-  //     res.status(500).send("Appointment already exists at that time");
-  //   }
-  // });
+
 });
-//check if appoint is booked at current date.
-//if no, book
-//then run findbusiness id query and promise query to book
-//if yes, error modal pops up
+
 
 router.delete("/user/appt-cancel", (req, res) => {
   let userId = req.user.id;
