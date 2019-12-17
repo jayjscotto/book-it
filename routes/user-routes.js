@@ -62,6 +62,11 @@ router.get("/location-search/:searchTerm", isAuthenticated, (req, res) => {
     }
   })
     .then(function(results) {
+      console.log(results);
+
+      if (results.length === 0) {
+        return res.render("search-error", {username: true});
+      }
       const searchRes = {
         gym: results,
         username: true
@@ -69,7 +74,9 @@ router.get("/location-search/:searchTerm", isAuthenticated, (req, res) => {
       res.render("usersearch", searchRes);
     })
     .catch(err => {
-      if (err) throw err;
+      if (err) {
+        res.render("error", {username: true});
+      }
     });
 });
 
@@ -122,7 +129,9 @@ router.get("/my-bookfit-appts", isAuthenticated, (req, res) => {
 
     res.render("myappointments", myAppointments)
   }).catch(err => {
-    if (err) throw err;
+    if (err) {
+      res.render("error", {username: true});
+    }
   });
 });
 

@@ -155,19 +155,6 @@ body footer div.footer-content h5:hover {
   cursor: pointer;
 }
 
-body div.error {
-  margin: 8em auto;
-  text-align: center;
-}
-
-body div.error img {
-  width: 50%;
-}
-
-body div.error h1 {
-  font-size: 4em;
-}
-
 body div.body-container {
   width: 80%;
   margin: 0 auto;
@@ -431,5 +418,23 @@ body div.body-container div.cards section.card .search-text a {
 
 body div.body-container div.cards section.card ul li {
   list-style: none;
+}
+
+body div.error {
+  margin: auto;
+  text-align: center;
+}
+
+body div.error img {
+  width: 50%;
+}
+
+body div.error h1 {
+  margin-top: 0.25em;
+  font-size: 4em;
+}
+
+body div.error a.btn {
+  margin: 2em auto;
 }
 /*# sourceMappingURL=style.css.map */
