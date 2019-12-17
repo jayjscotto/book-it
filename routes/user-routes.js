@@ -4,8 +4,9 @@ const path = require("path");
 // Requiring our models for syncing
 const db = require(".././models");
 const Sequelize = require("sequelize");
+const Op = db.Sequelize.Op;
 const moment = require("moment");
-// const Op = db.Sequelize.Op;
+
 
 //Require middleware for checking if a user is logged in
 const isAuthenticated = require("../config/isAuthenticated");
@@ -37,30 +38,28 @@ router.get("/members", isAuthenticated, (req, res) => {
   res.render("index", { username: userObj });
 });
 
-router.get("/location-search/:searchParam/:searchTerm", isAuthenticated, (req, res) => {
+router.get("/location-search/:searchTerm", isAuthenticated, (req, res) => {
   const searchTerm = req.params.searchTerm;
   const searchParam = req.params.searchParam;
-  console.log(searchParam)
-
-  let where = {}
-
-  const whereGen = (searchTerm, searchParam) => {
-    switch(searchParam) {
-      case "Facility Name":
-        return where.name = searchParam;
-      case "City":
-        return where.city = searchParam;
-      case "State":
-        return where.state = searchParam;
-      case "Zip%20Code":
-        return where.zipcode = searchParam;
-    }
-  }
-  whereGen();
-  console.log(where);
+  console.log(searchParam);
 
   db.Business.findAll({
-    where: whereGen()
+    where: {
+      [Op.or]: {
+        name: {
+          [Op.like]: `%${searchTerm}%`
+        },
+        city: {
+          [Op.like]: `%${searchTerm}%`
+        },
+        state: {
+          [Op.like]: `%${searchTerm}%`
+        },
+        zipcode: {
+          [Op.like]: `%${searchTerm}%`
+        }
+      }
+    }
   })
     .then(function(results) {
       const searchRes = {
@@ -74,33 +73,6 @@ router.get("/location-search/:searchParam/:searchTerm", isAuthenticated, (req, r
     });
 });
 
-router.get("/class-search/:searchTerm", isAuthenticated, (req, res) => {
-  const searchTerm = req.params.searchTerm;
-
-  console.log(searchTerm);
-
-  db.Services.findAll({
-    where: {
-      class_name: "Small Group Weight Traning"
-      // class_name: {
-      //   [Op.like]: `%${searchTerm}`
-      // }
-    }
-  })
-    .then(function(results) {
-      const searchRes = {
-        class: results,
-        username: true
-      };
-
-      console.log(searchRes);
-
-      res.render("usersearch", searchRes);
-    })
-    .catch(err => {
-      if (err) throw err;
-    });
-});
 
 //view my appointments route
 router.get("/my-bookfit-appts", isAuthenticated, (req, res) => {

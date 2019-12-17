@@ -306,7 +306,8 @@ body {
       flex-direction: column;
 
       input {
-        margin-right: 1em;
+        margin: 0 1em;
+        width: 50%;
       }
       section.card {
         background: colors(color5);

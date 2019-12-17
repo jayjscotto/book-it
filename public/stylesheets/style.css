@@ -375,7 +375,8 @@ body div.body-container div.cards {
 }
 
 body div.body-container div.cards input {
-  margin-right: 1em;
+  margin: 0 1em;
+  width: 50%;
 }
 
 body div.body-container div.cards section.card {
