@@ -1,6 +1,6 @@
 $(function() {
   // Getting references to our form and inputs
-  var loginForm = $("form.login");
+  var loginForm = $("form#auth-form");
   var emailInput = $("input#email-input");
   var passwordInput = $("input#password-input");
 
@@ -30,9 +30,12 @@ $(function() {
     }).then(function(data) {
       window.location.pathname = '/members';
       // If there's an error, log the error
-    }).catch(function(err) {
-      console.log(err);
-    });
+    }).catch(handleLoginErr);
+  }
+
+  function handleLoginErr(err) {
+    console.log(err)
+    $("#login-issue").text('Username or Password is incorrect.');
   }
 
 });

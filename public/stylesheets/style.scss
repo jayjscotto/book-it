@@ -201,18 +201,43 @@ body {
         display: flex;
         flex-direction: column;
         text-transform: uppercase;
-        
+
         form#login {
           min-width: 50%;
           display: flex;
           flex-direction: column;
           text-align: center;
+          h6 {
+            color:red;
+          }
           input {
             width: 70%;
             margin: 0 auto;
             border-radius: 10px;
           }
-          a.btn {
+          button.btn {
+            margin-top: 0.5em !important;
+            width: 40%;
+          }
+          @include desktop {
+            border-right: 1px dashed;
+          }
+        }
+        
+        form#auth-form {
+          min-width: 50%;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          h6 {
+            color:red;
+          }
+          input {
+            width: 70%;
+            margin: 0 auto;
+            border-radius: 10px;
+          }
+          button.btn {
             margin-top: 0.5em !important;
             width: 40%;
           }

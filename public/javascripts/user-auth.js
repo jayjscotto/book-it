@@ -6,7 +6,7 @@ $(function() {
   // When the form is submitted, we validate there's an email and password entered
   loginSubmit.on('click', function(event) {
     event.preventDefault();
-    console.log(`submitted`);
+
     const userData = {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim()
@@ -31,9 +31,12 @@ $(function() {
       window.location.pathname = '/members';
   
       // If there's an error, log the error
-    }).catch(function(err) {
-      console.log(err);
-    });
+    }).catch(handleLoginErr);
+  }
+
+  function handleLoginErr(err) {
+    console.log(err)
+    $("#login-issue").text('Username or Password is incorrect.');
   }
 
 

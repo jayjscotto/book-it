@@ -6,15 +6,16 @@
             <p class="lead">Login or Register today to secure your class now- members and drop-ins supported!</p>
             <hr class="my-4">
             <div class="user-auth">
-                <form id="login" class="login-form">
+                <form id="auth-form" class="login-form">
+                    <h6 id="login-issue"></h6>
                     <label for="login">E-mail</label>
                     <input id="email-input" class="form-control" type="email">  
                     <label for="login">Password</label>
                     <input id="password-input" class="form-control" type="password">
                     {{#if signup}}
-                    <a id="signup-submit" class="btn" role="button">Sign Up</a>
+                    <button id="signup-submit" class="btn" type="submit">Sign Up</button>
                     {{else}}
-                    <a id="login-submit" class="btn" role="button">Login</a>
+                    <button id="login-submit" class="btn" type="submit">Login</button>
                     {{/if}}
                 </form>
                 {{#if signup}}
