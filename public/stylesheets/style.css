@@ -109,6 +109,10 @@ body nav div.navbar-collapse ul li a:hover {
   cursor: pointer;
 }
 
+body div#help-modal {
+  text-align: justify;
+}
+
 body div#help-modal a.btn {
   background-color: #343a40;
   color: #00e5f5;
@@ -175,26 +179,26 @@ body footer div.footer-content a h6:hover {
   cursor: pointer;
 }
 
-body div.body-container {
+body div.body div.body-container {
   width: 80%;
   margin: 0 auto;
 }
 
-body div.body-container a, body div.body-container button {
+body div.body div.body-container a, body div.body div.body-container button {
   margin: auto;
   background-color: #343a40;
   color: #00e5f5;
   font-weight: 500;
 }
 
-body div.body-container a:hover, body div.body-container button:hover {
+body div.body div.body-container a:hover, body div.body div.body-container button:hover {
   opacity: 0.8;
   background-color: #00e5f5;
   color: black;
   cursor: pointer;
 }
 
-body div.body-container div.home-card {
+body div.body div.body-container div.home-card {
   background-color: #f5f7f7;
   max-width: 100%;
   text-align: center;
@@ -210,26 +214,26 @@ body div.body-container div.home-card {
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-body div.body-container div.home-card h1.h1 {
+body div.body div.body-container div.home-card h1.h1 {
   font-size: 3em;
 }
 
-body div.body-container div.home-card div.my-appt-card {
+body div.body div.body-container div.home-card div.my-appt-card {
   width: 80%;
   margin: 1.5em auto;
   padding: 1em;
 }
 
-body div.body-container div.home-card div.my-appt-card h3, body div.body-container div.home-card div.my-appt-card p, body div.body-container div.home-card div.my-appt-card h5 {
+body div.body div.body-container div.home-card div.my-appt-card h3, body div.body div.body-container div.home-card div.my-appt-card p, body div.body div.body-container div.home-card div.my-appt-card h5 {
   text-align: left;
   margin-bottom: 0;
 }
 
-body div.body-container div.home-card div.my-appt-card p {
+body div.body div.body-container div.home-card div.my-appt-card p {
   font-size: 1.1em;
 }
 
-body div.body-container div.home-card div.user-auth {
+body div.body div.body-container div.home-card div.user-auth {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,7 +244,7 @@ body div.body-container div.home-card div.user-auth {
   text-transform: uppercase;
 }
 
-body div.body-container div.home-card div.user-auth form#login {
+body div.body div.body-container div.home-card div.user-auth form#login {
   min-width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -252,28 +256,28 @@ body div.body-container div.home-card div.user-auth form#login {
   text-align: center;
 }
 
-body div.body-container div.home-card div.user-auth form#login h6 {
+body div.body div.body-container div.home-card div.user-auth form#login h6 {
   color: red;
 }
 
-body div.body-container div.home-card div.user-auth form#login input {
+body div.body div.body-container div.home-card div.user-auth form#login input {
   width: 70%;
   margin: 0 auto;
   border-radius: 10px;
 }
 
-body div.body-container div.home-card div.user-auth form#login button.btn {
+body div.body div.body-container div.home-card div.user-auth form#login button.btn {
   margin-top: 0.5em !important;
   width: 40%;
 }
 
 @media (min-width: 768px) {
-  body div.body-container div.home-card div.user-auth form#login {
+  body div.body div.body-container div.home-card div.user-auth form#login {
     border-right: 1px dashed;
   }
 }
 
-body div.body-container div.home-card div.user-auth form#auth-form {
+body div.body div.body-container div.home-card div.user-auth form#auth-form {
   min-width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -285,37 +289,37 @@ body div.body-container div.home-card div.user-auth form#auth-form {
   text-align: center;
 }
 
-body div.body-container div.home-card div.user-auth form#auth-form h6 {
+body div.body div.body-container div.home-card div.user-auth form#auth-form h6 {
   color: red;
 }
 
-body div.body-container div.home-card div.user-auth form#auth-form input {
+body div.body div.body-container div.home-card div.user-auth form#auth-form input {
   width: 70%;
   margin: 0 auto;
   border-radius: 10px;
 }
 
-body div.body-container div.home-card div.user-auth form#auth-form button.btn {
+body div.body div.body-container div.home-card div.user-auth form#auth-form button.btn {
   margin-top: 0.5em !important;
   width: 40%;
 }
 
 @media (min-width: 768px) {
-  body div.body-container div.home-card div.user-auth form#auth-form {
+  body div.body div.body-container div.home-card div.user-auth form#auth-form {
     border-right: 1px dashed;
   }
 }
 
-body div.body-container div.home-card div.user-auth div#signup {
+body div.body div.body-container div.home-card div.user-auth div#signup {
   margin: 2em auto 0 auto;
 }
 
-body div.body-container div.home-card div.user-auth div#signup a.btn {
+body div.body div.body-container div.home-card div.user-auth div#signup a.btn {
   width: 60%;
 }
 
 @media (min-width: 768px) {
-  body div.body-container div.home-card div.user-auth {
+  body div.body div.body-container div.home-card div.user-auth {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -323,7 +327,7 @@ body div.body-container div.home-card div.user-auth div#signup a.btn {
   }
 }
 
-body div.body-container div.home-card div.search-results div.card {
+body div.body div.body-container div.home-card div.search-results div.card {
   max-width: 80%;
   margin: 2em auto 0 auto;
   display: -webkit-box;
@@ -335,7 +339,7 @@ body div.body-container div.home-card div.search-results div.card {
           flex-direction: row;
 }
 
-body div.body-container div.home-card div.search-results div.card div.search-card-title {
+body div.body div.body-container div.home-card div.search-results div.card div.search-card-title {
   max-width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -348,7 +352,7 @@ body div.body-container div.home-card div.search-results div.card div.search-car
   margin: 1em;
 }
 
-body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-title {
+body div.body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -358,37 +362,37 @@ body div.body-container div.home-card div.search-results div.card div.search-car
           flex-direction: row;
 }
 
-body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-title p {
+body div.body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-title p {
   margin: 0.35em 0 0 0.5em;
 }
 
-body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-btn {
+body div.body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-btn {
   margin-left: 0.5em;
 }
 
-body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-btn a {
+body div.body div.body-container div.home-card div.search-results div.card div.search-card-title div.facility-btn a {
   width: 15em;
   max-width: 85%;
 }
 
-body div.body-container div.home-card div.business-cal a {
+body div.body div.body-container div.home-card div.business-cal a {
   margin: 0.5em auto;
 }
 
-body div.body-container div.home-card div.business-cal a span {
+body div.body div.body-container div.home-card div.business-cal a span {
   color: #343a40;
   visibility: hidden;
 }
 
-body div.body-container div.home-card div.business-cal a:hover span {
+body div.body div.body-container div.home-card div.business-cal a:hover span {
   visibility: visible;
 }
 
-body div.body-container div.home-card div.business-cal .modal-footer {
+body div.body div.body-container div.home-card div.business-cal .modal-footer {
   display: inline;
 }
 
-body div.body-container div.home-card div.business-cal div#classes {
+body div.body div.body-container div.home-card div.business-cal div#classes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -400,14 +404,14 @@ body div.body-container div.home-card div.business-cal div#classes {
       flex-wrap: wrap;
 }
 
-body div.body-container div.home-card div.business-cal div#classes div.card {
+body div.body div.body-container div.home-card div.business-cal div#classes div.card {
   width: 40%;
   margin: 1em auto;
   padding: 1em;
   border-radius: 10px;
 }
 
-body div.body-container div.cards {
+body div.body div.body-container div.cards {
   margin: 0.5em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -418,12 +422,12 @@ body div.body-container div.cards {
           flex-direction: column;
 }
 
-body div.body-container div.cards input {
+body div.body div.body-container div.cards input {
   margin: 0 1em;
   width: 50%;
 }
 
-body div.body-container div.cards section.card {
+body div.body div.body-container div.cards section.card {
   background: #f5f7f7;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -439,13 +443,13 @@ body div.body-container div.cards section.card {
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-body div.body-container div.cards section.card h3 {
+body div.body div.body-container div.cards section.card h3 {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin: 0.5em auto;
 }
 
-body div.body-container div.cards section.card .search-text {
+body div.body div.body-container div.cards section.card .search-text {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -455,43 +459,43 @@ body div.body-container div.cards section.card .search-text {
           flex-direction: row;
 }
 
-body div.body-container div.cards section.card .search-text p {
+body div.body div.body-container div.cards section.card .search-text p {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   margin: 0.5em 0.5em 0.5em auto;
 }
 
-body div.body-container div.cards section.card .search-text input, body div.body-container div.cards section.card .search-text select {
+body div.body div.body-container div.cards section.card .search-text input, body div.body div.body-container div.cards section.card .search-text select {
   border-radius: 5px;
 }
 
-body div.body-container div.cards section.card .search-text select {
+body div.body div.body-container div.cards section.card .search-text select {
   margin-right: 1em;
 }
 
-body div.body-container div.cards section.card .search-text a {
+body div.body div.body-container div.cards section.card .search-text a {
   margin: auto 0 auto 0.5em;
 }
 
-body div.body-container div.cards section.card ul li {
+body div.body div.body-container div.cards section.card ul li {
   list-style: none;
 }
 
-body div.error {
+body div.body div.error {
   margin: auto;
   text-align: center;
 }
 
-body div.error img {
+body div.body div.error img {
   width: 50%;
 }
 
-body div.error h1 {
+body div.body div.error h1 {
   margin-top: 0.25em;
   font-size: 4em;
 }
 
-body div.error a.btn {
+body div.body div.error a.btn {
   margin: 2em auto;
 }
 /*# sourceMappingURL=style.css.map */

@@ -109,7 +109,7 @@ body {
     }
   }
   div#help-modal {
-    
+    text-align: justify;
     a.btn {
       background-color: colors(color4);
       color: colors(color1);
@@ -167,240 +167,242 @@ body {
    
   }
 
-  div.body-container {
-    width: 80%;
-    margin: 0 auto;
-    
-    a, button {
-      margin: auto;
-      background-color: colors(color4);
-      color: colors(color1);
-      font-weight: 500;
-      &:hover {
-        opacity: 0.8;
-        background-color: colors(color1);
-        color: black;
-        cursor: pointer;
-      }
-    }
-
-    div.home-card {
-      background-color: colors(color5);
-      max-width: 100%;
-      text-align: center;
-      height: fit-content;
-      padding: 20px;
-      width: 100%;
-      margin: 1.5em auto;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-   
-      h1.h1 {
-        font-size: 3em;
-      }
-
+  div.body {
+    div.body-container {
+      width: 80%;
+      margin: 0 auto;
       
-      div.my-appt-card {
-        width: 80%;
-        margin: 1.5em auto;
-        padding: 1em;
-        h3, p, h5 {
-          text-align: left;
-          margin-bottom: 0;
-        }
-        p {
-          font-size: 1.1em;
+      a, button {
+        margin: auto;
+        background-color: colors(color4);
+        color: colors(color1);
+        font-weight: 500;
+        &:hover {
+          opacity: 0.8;
+          background-color: colors(color1);
+          color: black;
+          cursor: pointer;
         }
       }
 
-      div.user-auth {
-        display: flex;
-        flex-direction: column;
-        text-transform: uppercase;
-
-        form#login {
-          min-width: 50%;
-          display: flex;
-          flex-direction: column;
-          text-align: center;
-          h6 {
-            color:red;
-          }
-          input {
-            width: 70%;
-            margin: 0 auto;
-            border-radius: 10px;
-          }
-          button.btn {
-            margin-top: 0.5em !important;
-            width: 40%;
-          }
-          @include desktop {
-            border-right: 1px dashed;
-          }
-        }
-        
-        form#auth-form {
-          min-width: 50%;
-          display: flex;
-          flex-direction: column;
-          text-align: center;
-          h6 {
-            color:red;
-          }
-          input {
-            width: 70%;
-            margin: 0 auto;
-            border-radius: 10px;
-          }
-          button.btn {
-            margin-top: 0.5em !important;
-            width: 40%;
-          }
-          @include desktop {
-            border-right: 1px dashed;
-          }
-        }
-        div#signup {
-          margin: 2em auto 0 auto;
-          a.btn {
-            width: 60%;
-          }
-        }
-        @include desktop {
-          flex-direction: row;
-        }
-      }
-      div.search-results{
-        div.card {
-          max-width: 80%;
-          margin: 2em auto 0 auto;
-          display: flex;
-          flex-direction: row;
-          div.search-card-title {
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            margin: 1em;
-            div.facility-title{
-              display: flex;
-              flex-direction: row;
-              p {
-                margin: 0.35em 0 0 0.5em;
-              }
-            }
-            div.facility-btn {
-              margin-left: 0.5em;
-              a {
-                width: 15em;
-                max-width: 85%;
-              }
-            }
-          }
-        
-        }
-      }
-      div.business-cal {
-        a {
-          margin: 0.5em auto;
-          span {
-            color: colors(color4);
-            visibility: hidden;
-          }
-          &:hover{
-            span{
-              visibility: visible;
-            }
-          }
-        }
-        .modal-footer {
-          display: inline;
-        }
-        div#classes{
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          div.card{
-            width: 40%;
-            margin: 1em auto;
-            padding: 1em;
-            border-radius: 10px;
-          }
-        }
-      }
-    }
-
-    div.cards {
-      margin: 0.5em 1em;
-      display: flex;
-      flex-direction: column;
-
-      input {
-        margin: 0 1em;
-        width: 50%;
-      }
-      section.card {
-        background: colors(color5);
+      div.home-card {
+        background-color: colors(color5);
+        max-width: 100%;
+        text-align: center;
         height: fit-content;
         padding: 20px;
-        width: 95%;
-        margin: 0.5em auto;
-        justify-content: space-around;
+        width: 100%;
+        margin: 1.5em auto;
         border: none;
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-
-        h3 {
-          text-transform: uppercase;
-          letter-spacing: 1.5px;
-          margin: 0.5em auto;
+    
+        h1.h1 {
+          font-size: 3em;
         }
 
-        .search-text {
-          display: flex;
-          flex-direction: row;
-
+        
+        div.my-appt-card {
+          width: 80%;
+          margin: 1.5em auto;
+          padding: 1em;
+          h3, p, h5 {
+            text-align: left;
+            margin-bottom: 0;
+          }
           p {
+            font-size: 1.1em;
+          }
+        }
+
+        div.user-auth {
+          display: flex;
+          flex-direction: column;
+          text-transform: uppercase;
+
+          form#login {
+            min-width: 50%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            h6 {
+              color:red;
+            }
+            input {
+              width: 70%;
+              margin: 0 auto;
+              border-radius: 10px;
+            }
+            button.btn {
+              margin-top: 0.5em !important;
+              width: 40%;
+            }
+            @include desktop {
+              border-right: 1px dashed;
+            }
+          }
+          
+          form#auth-form {
+            min-width: 50%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            h6 {
+              color:red;
+            }
+            input {
+              width: 70%;
+              margin: 0 auto;
+              border-radius: 10px;
+            }
+            button.btn {
+              margin-top: 0.5em !important;
+              width: 40%;
+            }
+            @include desktop {
+              border-right: 1px dashed;
+            }
+          }
+          div#signup {
+            margin: 2em auto 0 auto;
+            a.btn {
+              width: 60%;
+            }
+          }
+          @include desktop {
+            flex-direction: row;
+          }
+        }
+        div.search-results{
+          div.card {
+            max-width: 80%;
+            margin: 2em auto 0 auto;
+            display: flex;
+            flex-direction: row;
+            div.search-card-title {
+              max-width: 100%;
+              display: flex;
+              flex-direction: column;
+              text-align: left;
+              margin: 1em;
+              div.facility-title{
+                display: flex;
+                flex-direction: row;
+                p {
+                  margin: 0.35em 0 0 0.5em;
+                }
+              }
+              div.facility-btn {
+                margin-left: 0.5em;
+                a {
+                  width: 15em;
+                  max-width: 85%;
+                }
+              }
+            }
+          
+          }
+        }
+        div.business-cal {
+          a {
+            margin: 0.5em auto;
+            span {
+              color: colors(color4);
+              visibility: hidden;
+            }
+            &:hover{
+              span{
+                visibility: visible;
+              }
+            }
+          }
+          .modal-footer {
+            display: inline;
+          }
+          div#classes{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            div.card{
+              width: 40%;
+              margin: 1em auto;
+              padding: 1em;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+
+      div.cards {
+        margin: 0.5em 1em;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          margin: 0 1em;
+          width: 50%;
+        }
+        section.card {
+          background: colors(color5);
+          height: fit-content;
+          padding: 20px;
+          width: 95%;
+          margin: 0.5em auto;
+          justify-content: space-around;
+          border: none;
+          border-radius: 10px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+          h3 {
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin: 0.5em 0.5em 0.5em auto;
+            margin: 0.5em auto;
           }
 
-          input, select  {
-            border-radius: 5px;
+          .search-text {
+            display: flex;
+            flex-direction: row;
+
+            p {
+              text-transform: uppercase;
+              letter-spacing: 1.5px;
+              margin: 0.5em 0.5em 0.5em auto;
+            }
+
+            input, select  {
+              border-radius: 5px;
+            }
+
+            select {
+              margin-right: 1em;
+            }
+
+            a {
+              margin: auto 0 auto 0.5em;
+            }
           }
 
-          select {
-            margin-right: 1em;
-          }
-
-          a {
-            margin: auto 0 auto 0.5em;
-          }
-        }
-
-        ul {
-          li {
-            list-style: none;
+          ul {
+            li {
+              list-style: none;
+            }
           }
         }
       }
     }
-  }
-  div.error {
-    margin: auto;
-    text-align: center;
-    img {
-      width: 50%;
-    }
-    h1 {
-      margin-top: 0.25em;
-      font-size: 4em;
-    }
-    a.btn {
-      margin: 2em auto;
+    div.error {
+      margin: auto;
+      text-align: center;
+      img {
+        width: 50%;
+      }
+      h1 {
+        margin-top: 0.25em;
+        font-size: 4em;
+      }
+      a.btn {
+        margin: 2em auto;
+      }
     }
   }
 }
