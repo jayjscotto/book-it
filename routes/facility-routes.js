@@ -26,6 +26,7 @@ const classDateGen = (goalDay, todayDate) => {
 };
 
 router.get("/facilityId=:id/classes/:day", isAuthenticated, (req, res) => {
+  //query the db for the facilities classes on the specific day
   db.Services.findAll({
     where: {
       business_id: req.params.id,
@@ -51,8 +52,8 @@ router.get("/facilityId=:id/classes/:day", isAuthenticated, (req, res) => {
     let day = req.params.day;
     day++;
 
-    console.log(today)
-    console.log(day)
+    // console.log(today)
+    // console.log(day)
 
     const dayClass = classDateGen(day, today);
 
@@ -68,6 +69,7 @@ router.get("/facilityId=:id/classes/:day", isAuthenticated, (req, res) => {
 
 
 router.get("/facilityId=:id/initial-view", isAuthenticated, (req, res) => {
+  // get today's date and query the db for classes on that date
   const todayWeekday = momentTime().isoWeekday() - 1;
 
   console.log(`requested day is ${todayWeekday}`);
@@ -89,13 +91,33 @@ router.get("/facilityId=:id/initial-view", isAuthenticated, (req, res) => {
       res.render("error", { username: true });
     }
 
+    validClasses = [];
+
+    //for loop that iterates through results
+    //get first two numbers of start time by results[i].dataValues.start_time.split(":")
+    //compare against momentTime().hour();
+    //if classTime[0] >= momentTime().hour(), push to the variable that will be in the hbs object
+    for(let classObj in results) {
+      let classTime = results[classObj].dataValues.start_time.split(":");
+      let currentTime = momentTime().hour();
+      if (classTime[0] >= currentTime) {
+        validClasses.push(results[classObj]);
+      }
+    }
+
+    console.log(`current hour: ${momentTime().hour()}`);
+    console.log(`results: ${results.length}`);
+    console.log(`valid: ${validClasses.length}`);
+
+    let classTime = results[0].dataValues.start_time.split(':');
+    console.log(classTime[0]); 
+
     const business = results[0].Business.dataValues;
 
-    const dayClass = momentTime().format("dddd, MMMM DD, YYYY")
-    console.log(`function results:${dayClass}`);
+    const dayClass = momentTime().format("dddd, MMMM DD, YYYY");
 
     const classDay = {
-      class: results,
+      class: validClasses,
       facility: business,
       username: true,
       viewDate: dayClass
