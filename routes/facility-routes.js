@@ -91,9 +91,8 @@ router.get("/facilityId=:id/initial-view", isAuthenticated, (req, res) => {
 
     const business = results[0].Business.dataValues;
 
-    const today = momentTime().isoWeekday();
-
-    const dayClass = classDateGen(todayWeekday, today);
+    const dayClass = momentTime().format("dddd, MMMM DD, YYYY")
+    console.log(`function results:${dayClass}`);
 
     const classDay = {
       class: results,
