@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+$(function() {
   const classDateGen = (goalDay, todayDate) => {
     // if we haven't yet passed the day of the week
     if (todayDate <= goalDay) {
@@ -15,64 +15,69 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
   
-  //returns array
-  const buttons = document.querySelectorAll(".appointment-modal");
+  // //returns array
+  // const buttons = document.querySelectorAll(".appointment-modal");
 
-  //assign event listener to each button and get data from API
-  buttons.forEach(button => {
-    button.addEventListener("click", e => {
-      e.preventDefault();
+  // //assign event listener to each button and get data from API
+  // buttons.forEach(button => {
+  //   button.addEventListener("click", e => {
+  //     e.preventDefault();
       
-      //class ID of facility class button
-      const classId = e.target.getAttribute("data-id");
-      console.log(classId);
-      $.get("/api/class-info/" + classId).then(data => {
+      $(".appointment-modal").on("click", e => {
+        //class ID of facility class button
+        const classId = e.target.getAttribute("data-id");
 
-        //database's class day + 1
-        //DB class day's are 0 - 6, Moment days are 1 - 7
-        const dayINeed = data[0].day_of_week + 1;
-        //today's date
-        const today = moment().isoWeekday();
+        $.get("/api/class-info/" + classId).then(data => {
 
-        const apptDate = classDateGen(dayINeed, today);
+          //database's class day + <i class="fas fa-repeat-1    "></i>
+          //DB class day's are 0 - 6, Moment days are 1 - 7
+          const dayINeed = data[0].day_of_week + 1;
+          
+          //today's date
+          const today = moment().isoWeekday();
+          //date of appointment
+          const apptDate = classDateGen(dayINeed, today);
+          //id of class in DB
+          const serviceId = data[0].id;
 
-        console.log(apptDate);
+          // console.log(dayINeed)
+          // console.log(apptDate);
+          // console.log(data);
 
-        const serviceId = data[0].id;
+          //select modal elements for data entry
+          const title = $("#modal-class-title");
+          const startTime = $("#modal-class-time");
+          const classCost = $("#modal-class-cost");
+          const classDateModal = $("#modal-class-date");
 
-        console.log(data);
-        //select modal elements for data entry
-        const title = document.getElementById("modal-class-title");
-        const startTime = document.getElementById("modal-class-time");
-        const classCost = document.getElementById("modal-class-cost");
-        const classDateModal = document.getElementById("modal-class-date");
+          //data entry for modal from DB response
+          title.text(data[0].class_name);
+          
+          //class start time moment formatting
+          const classTime = moment(data[0].start_time, "H").format("h:mm a");
+          startTime.text(classTime);
 
-        //data entry for modal from DB response
-        title.textContent = data[0].class_name;
+          //class cost
+          classCost.text(`Drop-in Rate: $${data[0].cost}`);
 
-        //class start time moment formatting
-        const classTime = moment(data[0].start_time, "H").format("h:mm a");
-        startTime.textContent = classTime;
+          //append class date to date area in modal
+          classDateModal.text(`${apptDate} at ${classTime}`);
 
-        //class cost
-        classCost.textContent = `Drop-in Rate: $${data[0].cost}`;
+          // //assign class ID to bookFit button for db query
+          // const bookButton = document.querySelector(
+          //   ".modal #book-appointment-final"
+          // );
+          //bookButton.addEventListener("click", e => {
+            
+          $(".modal #book-appointment-final").on("click", e => {
+          
+            e.stopPropagation();
+            e.preventDefault();
 
-        //append class date to date area in modal
-        classDateModal.textContent = `${apptDate} at ${classTime}`;
-
-        //assign class ID to bookFit button for db query
-        const bookButton = document.querySelector(
-          ".modal #book-appointment-final"
-        );
-
-        bookButton.addEventListener("click", e => {
-          e.stopPropagation();
-          e.preventDefault();
-
-          const apptObj = {
-            service_id: serviceId,
-            appt_date: apptDate
-          };
+            const apptObj = {
+              service_id: serviceId,
+              appt_date: apptDate
+            };
 
           //booking gif
 
@@ -107,4 +112,3 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
-});
