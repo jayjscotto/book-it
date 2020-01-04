@@ -22,6 +22,13 @@ INSERT INTO businesses (name, street_address, city, state, zipcode) VALUES
 ('Hunterdon Wellness Center', '1738 NJ-31', 'Clinton', 'NJ', '08809'),
 ('HealthQuest Fitness', '310 NJ-31', 'Flemington', 'NJ', '08822');
 
+INSERT INTO businesses (name, street_address, city, state, zipcode) VALUES 
+('Revv Fitness', '730 Main St South', 'Southbury', 'CT', '06488'),
+('Catalyst Fitness', '100 Main St N', 'Southbury', 'CT', '06488'),
+('Catalyst Fitness', '930 Straits Turnpike', 'Middlebury', 'CT', '06762'),
+('Waterbury YMCA', '136 W Main St', 'Waterbury', 'CT', '06702');
+
+
 
 INSERT INTO services (class_name, cost, start_time, day_of_week, business_id) VALUES
 -- MONDAY NEWELL F

@@ -8,6 +8,13 @@ BookFit is an appointment scheduling application where you can secure appointmen
 * Click `Book It` to book and confirm
 * Either in the menu or on the homepage click `View Appointments` to view your scheduled and past appointments
 
+## Using the deployed version
+* Navigate to: https://bookfit.herokuapp.com
+* Test user:
+    * Login: jay@jay.com
+    * Password: test1234
+
+
 ## Local Usage
 * Clone this repository onto your local machine
 * In the project directory, run `$npm install`
