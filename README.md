@@ -1,5 +1,6 @@
 # BookFit
 BookFit is an appointment scheduling application where you can secure appointments for services at businesses in your area
+![readmeGif](https://user-images.githubusercontent.com/50807550/72299262-4c9d6380-362e-11ea-87a3-9a28c10ea6c7.gif)
 
 ## Using the Project
 * Create a user on sign up page
