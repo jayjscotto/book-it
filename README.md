@@ -34,10 +34,10 @@ BookFit is an appointment scheduling application where you can secure appointmen
 
 ## Built With
 * [Heroku](https://www.heroku.com/)- Cloud platform which builds databases and websites deployed online. 
-* [Javascript](https://www.javascript.com/) - The scripting language used to manipulate the DOM.  
-* [jQuery](http://jquery.com/) - Javascript library for DOM and CSS manipulation.
-* [Moment.js](https://momentjs.com/) - Javascipt library for time calculations.
-* [Node](https://nodejs.org/en) - Javascript run-time environment that exectues server side code.
+* [JavaScript](https://www.javascript.com/) - The scripting language used to manipulate the DOM.  
+* [jQuery](http://jquery.com/) - JavaScript library for DOM and CSS manipulation.
+* [Moment.js](https://momentjs.com/) - JavaScipt library for time calculations.
+* [Node](https://nodejs.org/en) - JavaScript run-time environment that exectues server side code.
 * [Express](https://www.npmjs.com/package/express) - Node package used as middleware to create routes.
 * [Express-Handlebars](https://www.npmjs.com/package/express-handlebars) - Node package used as middleware to create templates for rendering pages. 
 * [Sequelize](http://docs.sequelizejs.com/) - Promise based ORM for Node that supports MySQL interactivity.
